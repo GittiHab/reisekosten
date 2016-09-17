@@ -1,0 +1,21 @@
+{
+  "name": "reisekostenabrechnung",
+  "version": "0.1.0",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "coffee-script": "^1.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Pius Ladenburger",
+  "license": "UNLICENSED",
+  "description": ""
+}
