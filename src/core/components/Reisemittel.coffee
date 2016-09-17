@@ -1,0 +1,3 @@
+class Reisemittel
+
+  constructor: (@name) ->
