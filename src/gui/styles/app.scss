@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
 }
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+}
 
 a {
   cursor: pointer;
@@ -41,7 +45,7 @@ a {
   width: 100%;
   background-color: #000;
   color: #fff;
-  * {
+  & > * {
     top: 12px;
     position: absolute;
     display: inline-block;
@@ -57,6 +61,17 @@ a {
   }
   h2 {
     left: 35px;
+    font-size: 24px;
+    font-weight: 300;
+    span {
+      position: relative;
+      top: -3px;
+      border: 1px solid white;
+      font-weight: 700;
+      border-radius: 3px;
+      font-size: 13px;
+      padding: 3px;
+    }
   }
 }
 
@@ -66,14 +81,122 @@ a {
   width: 70%;
   height: calc(100% - 60px);
 
-  h2 {
-    font-size: 30px;
-    font-weight: 300;
-    margin: 30px 0;
-  }
   h3 {
     font-size: 24px;
     font-weight: 800;
     margin: 10px 0;
   }
+
+  #edit {
+    margin-bottom: 30px;
+    background-color: #74757a;
+    color: white;
+    a {
+      position: relative;
+      display: block;
+      float: left;
+      box-sizing: border-box;
+      width: 50%;
+      padding: 5px;
+      font-size: 17px;
+      text-align: center;
+      i {
+        position: absolute;
+        left: 5px;
+      }
+      &:hover {
+        background-color: #66676c;
+      }
+    }
+    span {
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .4);
+  .wrap {
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    top: 25%;
+    left: 20%;
+    background-color: #fff;
+    h2 {
+      color: white;
+      position: absolute;
+      bottom: 100%;
+      margin-bottom: 10px;
+    }
+    .add {
+      font-size: 20px;
+      text-align: center;
+    }
+    .pagination {
+      position: absolute;
+      top: 100%;
+      text-align: center;
+      width: 100%;
+      span {
+        display: inline-block;
+        position: relative;
+        margin: 10px 2px;
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        border-radius: 100%;
+        &.active {
+          background-color: lightblue;
+        }
+      }
+    }
+    .next, .prev {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+      color: white;
+    }
+    .next {
+      left: 100%;
+      margin-left: 10px;
+    }
+    .prev {
+      right: 100%;
+      margin-right: 10px;
+    }
+  }
+}
+
+#overlay .settings {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  .table {
+    input {
+      float: left;
+      width: 20%;
+    }
+    span {
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #66676c;
+  border-radius: 3px;
+  outline: 0;
+  font-size: 16px;
+  box-sizing: border-box;
 }

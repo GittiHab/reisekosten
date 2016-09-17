@@ -12,6 +12,12 @@ class Station
 
   setExitDate: (exitDate) => @exitDate = exitDate
 
+  setReason: (reason) => @reason = reason
+
+  setText: (text) => @text = text
+
+  setLocation: (location) => @location = location
+
   addVerpflegung: (verpflegung) => addItem @, 'verpflegung', verpflegung
 
   removeVerpflegung: (verpflegung) => removeItem @, 'verpflegung', verpflegung

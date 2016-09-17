@@ -1,0 +1,21 @@
+<div id="overlay">
+    <div class="wrap">
+        <h2>{{ adder.currentTitle() }}</h2>
+
+        <div class="settings" ng-include="adder.currentTemplate()"></div>
+
+        <a class="prev fa" ng-class="{'fa-caret-left': !adder.isFirst(), 'fa-times': adder.isFirst()}"
+           ng-click="adder.prev()"></a>
+        <a class="next fa" ng-class="{'fa-caret-right': !adder.isLast(), 'fa-check': adder.isLast()}"
+           ng-click="adder.next()"></a>
+
+        <div class="pagination" ng-init="i = 0">
+        <span
+                class="pager"
+                ng-repeat="step in adder.steps"
+                ng-click="adder.goTo($index)"
+                ng-class="{active: adder.isStep($index)}">
+        </span>
+        </div>
+    </div>
+</div>

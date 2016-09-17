@@ -1,4 +1,5 @@
 {addItem, removeItem} = require './arrayManager'
+Station = require './Station'
 
 class Reise
 
@@ -22,7 +23,12 @@ class Reise
 
   getTitle: () => @title
 
-  addStation: (station) => addItem @, 'stations', station
+  setTitle: (title) => @title = title
+
+  addStation: (station = null) =>
+    if not station?
+      station = new Station '', '', ''
+    addItem @, 'stations', station
 
   removeStation: (station) =>
     if @stations.length - 1 < 3
