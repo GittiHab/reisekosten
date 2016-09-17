@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "devDependencies": {
     "chai": "^3.5.0",
+    "electron": "^1.4.0",
     "mocha": "^3.0.2"
   },
-  "main": "index.js",
+  "main": "app/src/index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "coffee-script": "^1.10.0"
+    "angular": "^1.5.8",
+    "angular-ui-router": "^1.0.0-beta.2",
+    "coffee-script": "^1.10.0",
+    "font-awesome": "^4.6.3"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "electron ."
   },
   "author": "Pius Ladenburger",
   "license": "UNLICENSED",

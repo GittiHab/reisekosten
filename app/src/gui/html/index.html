@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reisekostenabrechnung</title>
+    <link type="text/css" rel="stylesheet" href="../styles/app.css" />
+    <link type="text/css" rel="stylesheet" href="../../../../node_modules/font-awesome/css/font-awesome.min.css" />
+</head>
+<body ng-app="reisekostenabrechnung">
+    <div id="navbar">
+        <a ng-show="false" class="back fa fa-angle-left" ng-click="back()"></a>
+        <h2>Pius Ladenburger</h2>
+        <a class="menu fa fa-bars" ng-click="menu.toggleMenu()" title="Mehr anzeigen"></a>
+    </div>
+    <div id="mainView" ui-view>
+
+    </div>
+    <menu></menu>
+
+</body>
+<script>
+    require('../scripts/app');
+</script>
+</html>
