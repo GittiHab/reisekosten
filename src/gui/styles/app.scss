@@ -118,7 +118,7 @@ input {
         background-color: #66676c;
       }
     }
-    span {
+    & > span {
       display: block;
       clear: both;
     }
@@ -134,10 +134,10 @@ input {
   background-color: rgba(0, 0, 0, .4);
   .wrap {
     position: absolute;
-    width: 60%;
+    width: 70%;
     height: 50%;
     top: 25%;
-    left: 20%;
+    left: 15%;
     background-color: #fff;
     h2 {
       color: white;
@@ -148,38 +148,54 @@ input {
     .add {
       font-size: 20px;
       text-align: center;
+      margin: 10px;
+      color: dodgerblue;
+      a {
+        margin: 10px;
+      }
+      span {
+        font-size: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        padding: 5px;
+      }
     }
     .pagination {
       position: absolute;
       top: 100%;
       text-align: center;
       width: 100%;
+      background-color: #e0e5ec;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      z-index: 998;
       span {
         display: inline-block;
         position: relative;
-        margin: 10px 2px;
+        margin: 0 2px;
         width: 10px;
         height: 10px;
-        background-color: white;
+        background-color: #bec3ca;
         border-radius: 100%;
         &.active {
-          background-color: lightblue;
+          background-color: dodgerblue;
         }
       }
     }
     .next, .prev {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 50px;
-      color: white;
+      top: 100%;
+      margin-top: 3px;
+      font-size: 30px;
+      color: dodgerblue;
+      z-index: 999;
     }
     .next {
-      left: 100%;
+      right: 10px;
       margin-left: 10px;
     }
     .prev {
-      right: 100%;
+      left: 10px;
       margin-right: 10px;
     }
   }
@@ -188,33 +204,93 @@ input {
 #overlay .settings {
   overflow: auto;
   height: 100%;
-  width: 100%;
-  .table {
+  width: 90%;
+  margin: 10px auto;
+  .row, .heading {
     position: relative;
-    width: 80%;
+    width: calc(100% - 60px);
     margin: 0 auto;
-    & > div {
-      float: left;
-      width: 20%;
-    }
-    .transport {
-      position: absolute;
-      width: 30px;
-      left: -30px;
+    h3 {
+      font-size: 20px;
+      font-weight: 300;
+      text-align: center;
     }
     input {
-      border-radius: 0;
+      border: 0;
+      &[type=date] {
+        font-size: 12px;
+      }
     }
-    span {
+    & > span {
       display: block;
       clear: both;
+    }
+    & > div.cell {
+      border: 1px solid #e0e5ec;
+      border-radius: 0;
+      border-right-width: 0;
+      border-top-width: 0;
+      box-sizing: border-box;
+      float: left;
+      width: 20%;
+      &.last {
+        border-right-width: 1px;
+      }
+      &.half {
+        width: 15%;
+      }
+    }
+    $radius: 3px;
+    &.row:first-of-type {
+      & > div {
+        border-top-width: 1px;
+      }
+      div.first {
+        border-top-left-radius: $radius;
+      }
+      div.last {
+        border-top-right-radius: $radius;
+      }
+    }
+    &:nth-last-child(2) {
+      div.first {
+        border-bottom-left-radius: $radius;
+      }
+      div.last {
+        border-bottom-right-radius: $radius;
+      }
+    }
+    &:nth-of-type(1) > div,  & > div.noborder {
+      border: none;
+    }
+
+    .special {
+      position: absolute;
+      text-align: center;
+      border: none !important;
+      width: 30px !important;
+      padding: 5px;
+      cursor: pointer;
+      input {
+        display: none;
+      }
+      input:checked + i {
+        color: dodgerblue;
+      }
+      &.transport {
+        right: 100%;
+      }
+      &.delete {
+        color: firebrick;
+        left: 100%;
+      }
     }
   }
   #transport {
     float: none;
     width: 100%;
 
-    h3 {
+    h4 {
       font-size: 12px;
       font-weight: 700;
     }

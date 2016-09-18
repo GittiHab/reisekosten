@@ -1,8 +1,8 @@
 <h2>Ihre Reisen</h2>
 <div id="edit">
     <a><i class="fa fa-minus"></i> Löschen</a>
-    <a ng-click="addTravel()"><i class="fa fa-plus"></i> Hinzufügen</a>
+    <a ng-click="main.openAdder()"><i class="fa fa-plus"></i> Hinzufügen</a>
     <span></span>
 </div>
 <h3>2016</h3>
-<div ng-repeat="reise in reisen.reisen" class="travel">{{ reise.title }}</div>
+<div ng-repeat="reise in manager.reisen" class="travel" ng-click="main.openAdder(reise)">{{ reise.getTitle() }}</div>

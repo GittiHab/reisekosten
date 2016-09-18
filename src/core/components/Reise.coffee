@@ -1,10 +1,11 @@
 {addItem, removeItem} = require './arrayManager'
+mergeData = require './mergeObjects'
 Station = require './Station'
 Beleg = require './Beleg'
 
 class Reise
 
-  constructor: (@title) ->
+  constructor: (@title = '') ->
     @creationDate = new Date()
     @start = null
     @end = null
@@ -43,5 +44,24 @@ class Reise
     addItem @, 'bills', bill
 
   removeBill: (bill) => removeItem @, 'bills', bill
+
+  # Create a new travel from existing data
+  @createFromData: (data) ->
+    reise = new Reise
+
+    # Add associated objects
+    for station in data.stations
+      station = Station.createFromData station
+      reise.addStation station
+    delete data.stations
+    for bill in data.bills
+      bill = Beleg.createFromData bill
+      reise.addBill bill
+    delete data.bills
+
+    # merge in own data
+    mergeData reise, data
+
+    return reise
 
 module.exports = Reise

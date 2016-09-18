@@ -1,0 +1,28 @@
+<div class="heading">
+    <div class="cell date"><h3>Datum</h3></div>
+    <div class="cell note"><h3>Anmerkung</h3></div>
+    <div class="cell amount half"><h3>Betrag</h3></div>
+    <div class="cell currency half"><h3>Währung</h3></div>
+    <div class="cell tax half" titel="Bezahlte Mehrwertssteuer: Nur notwendig, wenn in Deutschland bezahlt"><h3>(MwSt.)</h3></div>
+    <div class="cell amountEur half" titel="In Euro umgerechneter Betrag, der abgesetzt werden soll"><h3>(Euro)</h3></div>
+    <span></span>
+</div>
+<div class="bills row" ng-repeat="bill in adder.travel.bills | orderBy: 'date'">
+    <div class="cell first date"><input type="date"
+                             ng-model="bill.date"/></div>
+    <div class="cell note"><input type="text"
+                             ng-model="bill.text"/></div>
+    <div class="cell amount half"><input type="number"
+                           ng-model="bill.amount"/></div>
+    <div class="cell currency half"><select
+                           ng-model="bill.currency"></select></div>
+    <div class="cell tax half"><input type="number" min="0"
+                           ng-model="bill.tax" /></div>
+    <div class="cell last amounEur half"><input type="number" min="0"
+                           ng-model="bill.amounEur" /></div>
+    <div ng-click="adder.travel.removeBill(bill)" class="delete special cell"
+         title="Diesen Beleg löschen">
+        <i class="fa fa-times"></i></div>
+    <span></span>
+</div>
+<div class="add"><a class="fa fa-plus" ng-click="adder.travel.addBill()"></a></div>

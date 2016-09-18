@@ -13,3 +13,11 @@ describe 'Reise', () ->
     expect(reise.stations.length).to.equal 1
     reise.removeStation station
     expect(reise.stations.length).to.equal 1
+    stations = []
+    for i in [1..4]
+      newStation = new Station '', '', ''
+      reise.addStation newStation
+      stations.push newStation
+    expect(reise.stations.length).to.equal 5
+    reise.removeStation stations[0]
+    expect(reise.stations.length).to.equal 4

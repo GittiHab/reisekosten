@@ -1,6 +1,8 @@
 require 'angular'
 require 'angular-ui-router'
-{Reise, Station, Verpflegung} = require '../../core'
+{Reise, Station, Verpflegung, ReiseManager} = require '../../core'
+remote = require('electron').remote
+fs = require 'fs'
 
 app = angular.module 'reisekostenabrechnung', ['ui.router']
 
@@ -19,11 +21,22 @@ app.config ($stateProvider, $urlRouterProvider) ->
 
 
 app.controller 'mainController', ($scope) ->
-  $scope.adding = false
-  $scope.addTravel = -> $scope.adding = true
+  @adding = false
+  $scope.edit = null
+  @openAdder = (reise = null) ->
+    @adding = true
+    $scope.edit = reise
+  @closeAdder = () ->
+    @adding = false
+    $scope.manager.save()
+  @isAdding = () -> @adding
+  dataPath = remote.getGlobal 'DataPath'
+  $scope.manager = ReiseManager.openProject dataPath
+  console.log $scope.manager
+  return
+
 
 app.controller 'reisenController', ->
-  @reisen = [{title: 'Meine erste Reise'}, {title: 'Zweite Reise'}]
   @title = 'Willkommen'
   return
 
@@ -34,7 +47,19 @@ app.controller 'menuController', ->
   @elements = [{title: 'Einstellungen'}, {title: 'Speicherort'}, {title: 'Über'}]
   return
 
-app.controller 'addController', ($scope) ->
+app.controller 'editController', ($scope) ->
+  @travel = new Reise ''
+  @_edit = false
+  @editTravel = (reise) =>
+    @_edit = true
+    @travel = reise
+    return
+
+  # Setup
+  if $scope.edit?
+    @editTravel $scope.edit
+    $scope.edit = null
+
   @step = 0
   @steps = [
     {
@@ -55,35 +80,31 @@ app.controller 'addController', ($scope) ->
     }
   ]
   @currentTitle = -> @steps[@step].title
-  @currentTemplate = -> 'add-steps/' + @steps[@step].template + '.html'
+  @currentTemplate = -> 'edit-steps/' + @steps[@step].template + '.html'
   @goTo = (index) -> @step = index
   @isStep = (index) -> @step is index
   @next = ->
     if @isLast()
       #save
-      # TODO
-      $scope.adding = false
+      if not @_edit then $scope.manager.add @travel
+      $scope.main.closeAdder()
       return
     @goTo(++@step)
   @prev = ->
     if @isFirst()
       # cancel
-      $scope.adding = false
+      $scope.main.closeAdder()
       return
     @goTo(--@step)
   @isLast = -> @step is @steps.length - 1
   @isFirst = -> @step is 0
-
-  @travel = new Reise ''
-  @setTitle = (title) ->
-      @travel.setTitle title
   return
 
 app.directive 'menu', ->
   return templateUrl: 'menu.html', controller: 'menuController', controllerAs: 'menu'
 
 app.directive 'add', ->
-  return templateUrl: 'add.html', controller: 'addController', controllerAs: 'adder'
+  return templateUrl: 'edit.html', controller: 'editController', controllerAs: 'adder'
 
 app.directive 'transport', ->
-  return templateUrl: 'add-steps/transport.html'
+  return templateUrl: 'edit-steps/transport.html'

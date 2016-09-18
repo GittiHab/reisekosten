@@ -98,7 +98,7 @@ input {
         left: 5px; }
       #mainView #edit a:hover {
         background-color: #66676c; }
-    #mainView #edit span {
+    #mainView #edit > span {
       display: block;
       clear: both; }
 
@@ -111,10 +111,10 @@ input {
   background-color: rgba(0, 0, 0, 0.4); }
   #overlay .wrap {
     position: absolute;
-    width: 60%;
+    width: 70%;
     height: 50%;
     top: 25%;
-    left: 20%;
+    left: 15%;
     background-color: #fff; }
     #overlay .wrap h2 {
       color: white;
@@ -123,59 +123,113 @@ input {
       margin-bottom: 10px; }
     #overlay .wrap .add {
       font-size: 20px;
-      text-align: center; }
+      text-align: center;
+      margin: 10px;
+      color: dodgerblue; }
+      #overlay .wrap .add a {
+        margin: 10px; }
+      #overlay .wrap .add span {
+        font-size: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        padding: 5px; }
     #overlay .wrap .pagination {
       position: absolute;
       top: 100%;
       text-align: center;
-      width: 100%; }
+      width: 100%;
+      background-color: #e0e5ec;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      z-index: 998; }
       #overlay .wrap .pagination span {
         display: inline-block;
         position: relative;
-        margin: 10px 2px;
+        margin: 0 2px;
         width: 10px;
         height: 10px;
-        background-color: white;
+        background-color: #bec3ca;
         border-radius: 100%; }
         #overlay .wrap .pagination span.active {
-          background-color: lightblue; }
+          background-color: dodgerblue; }
     #overlay .wrap .next, #overlay .wrap .prev {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 50px;
-      color: white; }
+      top: 100%;
+      margin-top: 3px;
+      font-size: 30px;
+      color: dodgerblue;
+      z-index: 999; }
     #overlay .wrap .next {
-      left: 100%;
+      right: 10px;
       margin-left: 10px; }
     #overlay .wrap .prev {
-      right: 100%;
+      left: 10px;
       margin-right: 10px; }
 
 #overlay .settings {
   overflow: auto;
   height: 100%;
-  width: 100%; }
-  #overlay .settings .table {
+  width: 90%;
+  margin: 10px auto; }
+  #overlay .settings .row, #overlay .settings .heading {
     position: relative;
-    width: 80%;
+    width: calc(100% - 60px);
     margin: 0 auto; }
-    #overlay .settings .table > div {
-      float: left;
-      width: 20%; }
-    #overlay .settings .table .transport {
-      position: absolute;
-      width: 30px;
-      left: -30px; }
-    #overlay .settings .table input {
-      border-radius: 0; }
-    #overlay .settings .table span {
+    #overlay .settings .row h3, #overlay .settings .heading h3 {
+      font-size: 20px;
+      font-weight: 300;
+      text-align: center; }
+    #overlay .settings .row input, #overlay .settings .heading input {
+      border: 0; }
+      #overlay .settings .row input[type=date], #overlay .settings .heading input[type=date] {
+        font-size: 12px; }
+    #overlay .settings .row > span, #overlay .settings .heading > span {
       display: block;
       clear: both; }
+    #overlay .settings .row > div.cell, #overlay .settings .heading > div.cell {
+      border: 1px solid #e0e5ec;
+      border-radius: 0;
+      border-right-width: 0;
+      border-top-width: 0;
+      box-sizing: border-box;
+      float: left;
+      width: 20%; }
+      #overlay .settings .row > div.cell.last, #overlay .settings .heading > div.cell.last {
+        border-right-width: 1px; }
+      #overlay .settings .row > div.cell.half, #overlay .settings .heading > div.cell.half {
+        width: 15%; }
+    #overlay .settings .row.row:first-of-type > div, #overlay .settings .heading.row:first-of-type > div {
+      border-top-width: 1px; }
+    #overlay .settings .row.row:first-of-type div.first, #overlay .settings .heading.row:first-of-type div.first {
+      border-top-left-radius: 3px; }
+    #overlay .settings .row.row:first-of-type div.last, #overlay .settings .heading.row:first-of-type div.last {
+      border-top-right-radius: 3px; }
+    #overlay .settings .row:nth-last-child(2) div.first, #overlay .settings .heading:nth-last-child(2) div.first {
+      border-bottom-left-radius: 3px; }
+    #overlay .settings .row:nth-last-child(2) div.last, #overlay .settings .heading:nth-last-child(2) div.last {
+      border-bottom-right-radius: 3px; }
+    #overlay .settings .row:nth-of-type(1) > div, #overlay .settings .row > div.noborder, #overlay .settings .heading:nth-of-type(1) > div, #overlay .settings .heading > div.noborder {
+      border: none; }
+    #overlay .settings .row .special, #overlay .settings .heading .special {
+      position: absolute;
+      text-align: center;
+      border: none !important;
+      width: 30px !important;
+      padding: 5px;
+      cursor: pointer; }
+      #overlay .settings .row .special input, #overlay .settings .heading .special input {
+        display: none; }
+      #overlay .settings .row .special input:checked + i, #overlay .settings .heading .special input:checked + i {
+        color: dodgerblue; }
+      #overlay .settings .row .special.transport, #overlay .settings .heading .special.transport {
+        right: 100%; }
+      #overlay .settings .row .special.delete, #overlay .settings .heading .special.delete {
+        color: firebrick;
+        left: 100%; }
   #overlay .settings #transport {
     float: none;
     width: 100%; }
-    #overlay .settings #transport h3 {
+    #overlay .settings #transport h4 {
       font-size: 12px;
       font-weight: 700; }
 

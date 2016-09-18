@@ -1,0 +1,34 @@
+<div class="transports row" ng-repeat="transport in station.transportations">
+    <div class="cell noborder first name"><h4>Name</h4>
+        <input type="text"
+                             ng-model="transport.name"/></div>
+    <div class="cell noborder amount last" ng-if="transport.isOeffentliche()">
+        <h4>Betrag</h4>
+        <input type="number" min="0"
+               ng-model="transport.amount"/>
+    </div>
+    <div class="cell noborder amount" ng-if="transport.isPrivat()">
+        <h4>Entfernung</h4>
+        <input type="number" min="0"
+               ng-model="transport.distance"/>
+    </div>
+    <div class="cell noborder last business" ng-if="transport.isPrivat()">
+        <h4>Geschäftswagen</h4>
+        <input type="checkbox"
+               ng-model="transport.business"/>
+    </div>
+    <div ng-click="station.removeTransport(transport)" class="delete special cell noborder"
+         title="Dieses Transportmittel löschen">
+        <i class="fa fa-times"></i></div>
+    <span></span>
+</div>
+<div class="add">
+    <a ng-click="station.addTransport(null, true)"
+       title="Anreise durch ein öffentliches Transportmittel. Flug, Bus, Bahn, etc.">
+        <i class="fa fa-plane"></i><span>Öffentliche</span>
+    </a>
+    <a ng-click="station.addTransport(null, false)"
+       title="Anreise durch ein privates Transportmittel. PKW oder Auto">
+        <i class="fa fa-car"></i><span>Privat</span>
+    </a>
+</div>

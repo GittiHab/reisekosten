@@ -1,3 +1,5 @@
+mergeData = require './mergeObjects'
+
 class Beleg
 
   # Create a new Beleg (Bill)
@@ -9,7 +11,7 @@ class Beleg
   # @param [Float] amount The amount of the bill as stated on it in the original currency
   # @param [String] currency The currency the bill is in (please use the 3 Letter shortcode)
   # @param [Float] amountEur The amount of the bill converted in Euro – best if provided by the bank
-  constructor: (@date, @tax, @text, @amount, @currency = 'EUR', @amountEur = null) ->
+  constructor: (@date = 0, @tax = 0, @text = '', @amount = 0, @currency = 'EUR', @amountEur = null) ->
 
 
   setDate: (date) => @date = date
@@ -18,5 +20,14 @@ class Beleg
   setAmount: (amount) => @amount = amount
   setCurrency: (currency) => @currency = currency
   setEuros: (amountEur) => @amountEur = amountEur
+
+  # Create a new bill from existing data
+  @createFromData: (data) ->
+    bill = new Beleg
+
+    # merge in own data
+    mergeData bill, data
+
+    return bill
 
 module.exports = Beleg

@@ -1,4 +1,5 @@
 Reisemittel = require './Reisemittel'
+mergeData = require './mergeObjects'
 
 class Privat extends Reisemittel
 
@@ -22,5 +23,14 @@ class Privat extends Reisemittel
       return 0
     type = if @motorcycle then 'motorcycle' else 'pkw'
     return @distance * @rate[type]
+
+  # Create a new private transport from existing data
+  @createFromData: (data) ->
+    transport = new Privat
+
+    # merge in own data
+    mergeData transport, data
+
+    return transport
 
 module.exports = Privat

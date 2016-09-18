@@ -1,4 +1,6 @@
 electron = require('electron')
+fs = require 'fs'
+mkdirp = require 'mkdirp'
 # Module to control application life.
 app = electron.app
 # Module to create native browser window.
@@ -8,6 +10,12 @@ BrowserWindow = electron.BrowserWindow
 # be closed automatically when the JavaScript object is garbage collected.
 mainWindow = null
 
+# Globals
+## Data path
+global['DataPath'] = app.getPath('appData') + '/Pius Ladenburger/Reisekostenabrechnung'
+if not fs.existsSync global['DataPath']
+  mkdirp global['DataPath']
+
 createWindow = ->
   # Create the browser window.
   mainWindow = new BrowserWindow {width: 800, height: 600}
@@ -16,7 +24,7 @@ createWindow = ->
   mainWindow.loadURL 'file://' + __dirname + '/gui/html/index.html'
 
   # Open the DevTools.
-#  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   # Emitted when the window is closed.
   mainWindow.on 'closed', ->
@@ -32,10 +40,7 @@ app.on 'ready', createWindow
 
 # Quit when all windows are closed.
 app.on 'window-all-closed', ->
-  # On OS X it is common for applications and their menu bar
-  # to stay active until the user quits explicitly with Cmd + Q
-  if process.platform isnt 'darwin'
-    app.quit()
+  app.quit()
 
 
 app.on 'activate', ->

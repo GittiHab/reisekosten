@@ -1,3 +1,5 @@
+mergeData = require './mergeObjects'
+
 class Verpflegung
 
   # @param [Integer] dayRate The amount received back per person per day
@@ -8,7 +10,7 @@ class Verpflegung
   # @param [Boolean] lunch If the flat should include lunch
   # @param [Boolean] dinner If the flat should include dinner
   # @param [Integer] number For how many people doese this flat count
-  constructor: (@dayRate, @from, @to, @breakfast, @lunch, @dinner, @number = 1) ->
+  constructor: (@dayRate = 0, @from = 0, @to = 0, @breakfast = false, @lunch = false, @dinner = false, @number = 1) ->
     @rates =
       breakfast: 20
       lunch: 40
@@ -48,5 +50,14 @@ class Verpflegung
   setLunch: (lunch) => @lunch = lunch
 
   setDinner: (dinner) => @dinner = dinner
+
+  # Create a new flat from existing data
+  @createFromData: (data) ->
+    flat = new Verpflegung
+
+    # merge in own data
+    mergeData flat, data
+
+    return flat
 
 module.exports = Verpflegung
