@@ -4,6 +4,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "electron": "^1.4.0",
+    "electron-packager": "^8.0.0",
     "mocha": "^3.0.2"
   },
   "main": "app/src/index.js",
@@ -19,7 +20,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager ./ \"Reisekostenabrechnung\" --platform=darwin --icon=./icons/icon.icns --overwrite --out=./build"
   },
   "author": "Pius Ladenburger",
   "license": "UNLICENSED",
