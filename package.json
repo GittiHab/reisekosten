@@ -1,6 +1,6 @@
 {
   "name": "reisekostenabrechnung",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "devDependencies": {
     "chai": "^3.5.0",
     "electron": "^1.4.0",
