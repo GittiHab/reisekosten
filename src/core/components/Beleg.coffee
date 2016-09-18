@@ -1,4 +1,4 @@
-mergeData = require './mergeObjects'
+mergeData = require '../mergeObjects'
 
 class Beleg
 

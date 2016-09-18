@@ -1,5 +1,5 @@
-{addItem, removeItem} = require './arrayManager'
-mergeData = require './mergeObjects'
+{addItem, removeItem} = require '../arrayManager'
+mergeData = require '../mergeObjects'
 Oeffentliche = require './Oeffentliche'
 Privat = require './Privat'
 Verpflegung = require './Verpflegung'

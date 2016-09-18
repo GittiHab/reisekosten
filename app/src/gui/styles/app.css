@@ -17,7 +17,6 @@ a {
   cursor: pointer; }
 
 input {
-  width: 100%;
   padding: 5px;
   border: 1px solid #66676c;
   border-radius: 3px;
@@ -80,6 +79,22 @@ input {
     font-size: 24px;
     font-weight: 800;
     margin: 10px 0; }
+  #mainView .travel {
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #e0e5ec;
+    padding: 5px; }
+    #mainView .travel h4 {
+      position: absolute;
+      box-sizing: border-box;
+      width: calc(100% - 50px);
+      height: 100%;
+      padding: 5px;
+      top: 0;
+      left: 50px;
+      font-size: 18px;
+      font-weight: 300;
+      cursor: pointer; }
   #mainView #edit {
     margin-bottom: 30px;
     background-color: #74757a;
@@ -171,6 +186,8 @@ input {
   height: 100%;
   width: 90%;
   margin: 10px auto; }
+  #overlay .settings input[type=text] {
+    width: 100%; }
   #overlay .settings .row, #overlay .settings .heading {
     position: relative;
     width: calc(100% - 60px);

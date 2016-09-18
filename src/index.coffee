@@ -1,5 +1,6 @@
 electron = require('electron')
 fs = require 'fs'
+path = require 'path'
 mkdirp = require 'mkdirp'
 # Module to control application life.
 app = electron.app
@@ -12,7 +13,7 @@ mainWindow = null
 
 # Globals
 ## Data path
-global['DataPath'] = app.getPath('appData') + '/Pius Ladenburger/Reisekostenabrechnung'
+global['DataPath'] = path.normalize app.getPath('appData') + '/Pius Ladenburger/Reisekostenabrechnung'
 if not fs.existsSync global['DataPath']
   mkdirp global['DataPath']
 

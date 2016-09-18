@@ -3,6 +3,7 @@ require 'angular-ui-router'
 {Reise, Station, Verpflegung, ReiseManager} = require '../../core'
 remote = require('electron').remote
 fs = require 'fs'
+path = require 'path'
 
 app = angular.module 'reisekostenabrechnung', ['ui.router']
 
@@ -28,16 +29,21 @@ app.controller 'mainController', ($scope) ->
     $scope.edit = reise
   @closeAdder = () ->
     @adding = false
-    $scope.manager.save()
   @isAdding = () -> @adding
   dataPath = remote.getGlobal 'DataPath'
   $scope.manager = ReiseManager.openProject dataPath
-  console.log $scope.manager
   return
 
 
-app.controller 'reisenController', ->
-  @title = 'Willkommen'
+app.controller 'reisenController', ($scope) ->
+  @deleteFields = []
+  @delete = ->
+    if confirm 'Unwiderruflich löschen?'
+      for item, i in $scope.reisen.deleteFields
+        if item? and item
+          $scope.manager.removei i
+      @deleteFields = []
+    return
   return
 
 app.controller 'menuController', ->
@@ -87,17 +93,24 @@ app.controller 'editController', ($scope) ->
     if @isLast()
       #save
       if not @_edit then $scope.manager.add @travel
-      $scope.main.closeAdder()
+      @saveAndClose()
       return
     @goTo(++@step)
   @prev = ->
     if @isFirst()
       # cancel
-      $scope.main.closeAdder()
+      @saveAndClose false
       return
     @goTo(--@step)
+  @saveAndClose = (save = true) ->
+    if @_edit or save
+      $scope.manager.save @travel
+    $scope.main.closeAdder()
+
   @isLast = -> @step is @steps.length - 1
   @isFirst = -> @step is 0
+  @countries = JSON.parse(fs.readFileSync path.join '..', '..', 'data', 'countries.json')
+  @currencies = JSON.parse(fs.readFileSync path.join '..', '..', 'data', 'currencies.json')
   return
 
 app.directive 'menu', ->

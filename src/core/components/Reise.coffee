@@ -1,5 +1,5 @@
-{addItem, removeItem} = require './arrayManager'
-mergeData = require './mergeObjects'
+{addItem, removeItem} = require '../arrayManager'
+mergeData = require '../mergeObjects'
 Station = require './Station'
 Beleg = require './Beleg'
 
@@ -12,6 +12,7 @@ class Reise
     @number = null
     @stations = []
     @bills = []
+    @id = 0
 
   setStart: (start) => @start = start
 
@@ -26,6 +27,10 @@ class Reise
   getTitle: () => @title
 
   setTitle: (title) => @title = title
+
+  getId: () => @id
+
+  generateId: (index) => @id = index + '_' + Math.round Math.random() * 1000
 
   addStation: (station = null) =>
     if not station?

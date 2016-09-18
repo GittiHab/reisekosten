@@ -1,5 +1,7 @@
 fs = require 'fs'
+pathFs = require 'path'
 Reise = require './components/Reise'
+
 class ReiseManager
 
   constructor: (@path) ->
@@ -7,11 +9,18 @@ class ReiseManager
 
   add: (reise) =>
     @reisen.push reise
+    if reise.getId() is 0
+      reise.generateId @reisen.indexOf(reise) + 1
+    return
+
+  removei: (reiseIndex) =>
+    @_deleteReise @reisen[reiseIndex]
+    @reisen.splice reiseIndex, 1
     return
 
   remove: (reise) =>
     index = @reisen.indexOf reise
-    @reisen.slice index, 1
+    @removei index
     return
 
   save: (reise = null, callback = null) =>
@@ -26,8 +35,12 @@ class ReiseManager
     return
 
   _saveReise: (reise) =>
-    path = @path + '/' + @reisen.indexOf(reise) + '_' + reise.getTitle() + '.json'
-    fs.writeFile path, JSON.stringify reise
+    fs.writeFile @_pathToReise(reise), JSON.stringify reise
+
+  _deleteReise: (reise) =>
+    fs.unlinkSync @_pathToReise(reise), JSON.stringify reise
+
+  _pathToReise: (reise) => @path + pathFs.sep + 'Travel_' + reise.getId() + '.json'
 
   open: (path) => # TODO open a travel
 
@@ -41,7 +54,7 @@ class ReiseManager
   # @param [String] path The path to the projects which files should be loaded
   # @return [ReiseManager] The manager for this project with all the data
   @openProject: (path) ->
-    manager = if fs.existsSync path + '/settings.json' then @_openProject path else @_createProject path
+    manager = if fs.existsSync path + pathFs.sep + 'settings.json' then @_openProject path else @_createProject path
     return manager
 
   @_openProject: (path) ->
@@ -51,7 +64,7 @@ class ReiseManager
     for filename in files
       if filename.indexOf('_') < 0
         continue
-      data = fs.readFileSync path + '/' + filename
+      data = fs.readFileSync path + pathFs.sep + filename
       data = JSON.parse data
       manager.add Reise.createFromData data
     return manager
@@ -60,7 +73,7 @@ class ReiseManager
   # @param [String] path The path where the project data should be stored
   # @return [ReiseManager] The manager for this project
   @_createProject: (path) ->
-    fs.writeFileSync path + '/settings.json', '{"version": "0.9.0"}'
+    fs.writeFileSync path + pathFs.sep + 'settings.json', '{"version": "0.9.0"}'
     return new ReiseManager path
 
 module.exports = ReiseManager

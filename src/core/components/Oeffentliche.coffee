@@ -1,5 +1,5 @@
 Reisemittel = require './Reisemittel'
-mergeData = require './mergeObjects'
+mergeData = require '../mergeObjects'
 
 class Oeffentliche extends Reisemittel
 
