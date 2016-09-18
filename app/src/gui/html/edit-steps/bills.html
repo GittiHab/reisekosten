@@ -15,6 +15,7 @@
     <div class="cell amount half"><input type="number"
                            ng-model="bill.amount"/></div>
     <div class="cell currency half"><select
+            ng-options="currency for (code, currency) in adder.currencies track by code"
                            ng-model="bill.currency"></select></div>
     <div class="cell tax half"><input type="number" min="0"
                            ng-model="bill.tax" /></div>

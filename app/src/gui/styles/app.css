@@ -215,6 +215,9 @@ input {
         border-right-width: 1px; }
       #overlay .settings .row > div.cell.half, #overlay .settings .heading > div.cell.half {
         width: 15%; }
+      #overlay .settings .row > div.cell.location input, #overlay .settings .row > div.cell.location select, #overlay .settings .heading > div.cell.location input, #overlay .settings .heading > div.cell.location select {
+        width: 50%;
+        float: left; }
     #overlay .settings .row.row:first-of-type > div, #overlay .settings .heading.row:first-of-type > div {
       border-top-width: 1px; }
     #overlay .settings .row.row:first-of-type div.first, #overlay .settings .heading.row:first-of-type div.first {

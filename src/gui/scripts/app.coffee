@@ -109,8 +109,8 @@ app.controller 'editController', ($scope) ->
 
   @isLast = -> @step is @steps.length - 1
   @isFirst = -> @step is 0
-  @countries = JSON.parse(fs.readFileSync path.join '..', '..', 'data', 'countries.json')
-  @currencies = JSON.parse(fs.readFileSync path.join '..', '..', 'data', 'currencies.json')
+  @countries = JSON.parse(fs.readFileSync path.join __dirname, '..', '..', 'data', 'countries.json')
+  @currencies = JSON.parse(fs.readFileSync path.join __dirname, '..', '..', 'data', 'currencies.json')
   return
 
 app.directive 'menu', ->

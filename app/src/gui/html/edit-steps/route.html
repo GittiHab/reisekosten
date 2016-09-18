@@ -8,19 +8,21 @@
 </div>
 <div class="station row" ng-repeat="station in adder.travel.stations | orderBy: 'entryDate'">
     <div class="cell transport special" title="Transportmittel anzeigen/ausblenden"><label>
-        <input type="checkbox" class="nostyle" ng-model="stationField[$index].showTransport" />
+        <input type="checkbox" class="nostyle" ng-model="stationField[$index].showTransport"/>
         <i class="fa fa-car"></i>
     </label></div>
     <div class="cell entry first"><input type="date"
-                              ng-model="station.entryDate"/></div>
+                                         ng-model="station.entryDate"/></div>
     <div class="cell exit"><input type="date"
-                             ng-model="station.exitDate"/></div>
-    <div class="cell location"><input type="text"
-                                 ng-model="station.location"/></div>
+                                  ng-model="station.exitDate"/></div>
+    <div class="cell location"><input type="string"
+                                      ng-model="station.city"/>
+        <select ng-model="station.country"
+                ng-options="country for country in adder.countries"></select></div>
     <div class="cell reason"><input type="text"
-                               ng-model="station.reason"/></div>
+                                    ng-model="station.reason"/></div>
     <div class="cell note last"><input type="text"
-                             ng-model="station.text"/></div>
+                                       ng-model="station.text"/></div>
     <div ng-click="adder.travel.removeStation(station)" class="cell delete special" title="Diese Station löschen">
         <i class="fa fa-times"></i></div>
     <span></span>

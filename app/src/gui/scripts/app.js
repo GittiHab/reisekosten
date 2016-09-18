@@ -156,8 +156,8 @@
     this.isFirst = function() {
       return this.step === 0;
     };
-    this.countries = JSON.parse(fs.readFileSync(path.join('..', '..', 'data', 'countries.json')));
-    this.currencies = JSON.parse(fs.readFileSync(path.join('..', '..', 'data', 'currencies.json')));
+    this.countries = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'countries.json')));
+    this.currencies = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'currencies.json')));
   });
 
   app.directive('menu', function() {

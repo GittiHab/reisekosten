@@ -261,6 +261,12 @@ input {
       &.half {
         width: 15%;
       }
+      &.location {
+        input, select {
+          width: 50%;
+          float: left;
+        }
+      }
     }
     $radius: 3px;
     &.row:first-of-type {

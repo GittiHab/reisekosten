@@ -7,7 +7,7 @@ Reisemittel = require './Reisemittel'
 
 class Station
 
-  constructor: (@reason = '', @text = '', @location = '', @inland = true) ->
+  constructor: (@reason = '', @text = '', @city = '', @country = '', @inland = true) ->
     @entryDate = null
     @exitDate = null
     @verpflegung = []
@@ -21,7 +21,14 @@ class Station
 
   setText: (text) => @text = text
 
-  setLocation: (location) => @location = location
+  setLocation: (city, country) =>
+    @setCity city
+    @setCountry country
+
+  setCity: (city) => @city = city
+  setcountry: (country) => @country = country
+
+  getLocation: () => @city + ' ' + @country
 
   setInland: (inland) => @inland = inland
 
