@@ -37,4 +37,16 @@ class Verpflegung
 
   setTo: (to) => @to = to
 
+  setFrom: (from) => @from = from
+
+  setNumber: (number) => @number = number
+
+  setRate: (rate) => @rate = rate
+
+  setBreakfast: (breakfast) => @breakfast = breakfast
+
+  setLunch: (lunch) => @lunch = lunch
+
+  setDinner: (dinner) => @dinner = dinner
+
 module.exports = Verpflegung

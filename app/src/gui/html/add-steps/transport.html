@@ -1,0 +1,41 @@
+<div class="transports table" ng-repeat="transport in station.transportations">
+    <div class="name"><h3>Name</h3>
+        <input type="text"
+                             ng-model="transportField[$index].name"
+                             ng-change="transport.setName(transportField[$index].name)"/></div>
+    <div class="amount" ng-if="transport.isOeffentliche()">
+        <h3>Betrag</h3>
+        <input type="number" min="0"
+               ng-model="transportField[$index].amount"
+               ng-change="transport.setAmount(transportField[$index].amount)"/>
+    </div>
+    <div class="amount" ng-if="transport.isPrivat()">
+        <h3>Entfernung</h3>
+        <input type="number" min="0"
+               ng-model="transportField[$index].distance"
+               ng-change="transport.setDistance(transportField[$index].distance)"/>
+    </div>
+    <div class="rate" ng-if="transport.isPrivat()">
+        <h3>Satz</h3>
+        <input type="number" min="0"
+               ng-model="transportField[$index].rate"
+               ng-change="transport.setRate(transportField[$index].rate)"/>
+    </div>
+    <div class="business" ng-if="transport.isPrivat()">
+        <h3>Geschäftswagen</h3>
+        <input type="checkbox"
+               ng-model="transportField[$index].business"
+               ng-change="transport.setBusiness(transportField[$index].business)"/>
+    </div>
+    <span></span>
+</div>
+<div class="add">
+    <a ng-click="station.addTransport(null, true)"
+       title="Anreise durch ein öffentliches Transportmittel. Flug, Bus, Bahn, etc.">
+        <i class="fa fa-plane"></i> Öffentliche
+    </a>
+    <a ng-click="station.addTransport(null, false)"
+       title="Anreise durch ein privates Transportmittel. PKW oder Auto">
+        <i class="fa fa-car"></i> Privat
+    </a>
+</div>

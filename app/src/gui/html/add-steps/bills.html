@@ -1,0 +1,31 @@
+<div class="heading table">
+    <div class="date"><h3>Datum</h3></div>
+    <div class="note"><h3>Anmerkung</h3></div>
+    <div class="amount"><h3>Betrag</h3></div>
+    <div class="currency"><h3>Währung</h3></div>
+    <div class="tax" titel="Nur notwendig, wenn in Deutschland bezahlt"><h3>(Steuer)</h3></div>
+    <div class="amountEur" titel="Umgerechneter Betrag, der abgesetzt werden soll"><h3>(Betrag in EUR)</h3></div>
+    <span></span>
+</div>
+<div class="bills table" ng-repeat="bill in adder.travel.bills">
+    <div class="date"><input type="date"
+                             ng-model="billField[$index].date"
+                             ng-change="bill.setDate(billField[$index].date)"/></div>
+    <div class="note"><input type="text"
+                             ng-model="billField[$index].note"
+                             ng-change="bill.setText(billField[$index].note)"/></div>
+    <div class="amount"><input type="number"
+                           ng-model="billField[$index].amount"
+                           ng-change="bill.setAmount(billField[$index].amount)"/></div>
+    <div class="currency"><select
+                           ng-model="billField[$index].currency"
+                           ng-change="bill.setCurrency(billField[$index].currency)"></select></div>
+    <div class="tax"><input type="number" min="0"
+                           ng-model="billField[$index].tax"
+                           ng-change="bill.setTax(billField[$index].tax)"/></div>
+    <div class="amounEur"><input type="number" min="0"
+                           ng-model="billField[$index].euros"
+                           ng-change="bill.setEuros(billField[$index].euros)"/></div>
+    <span></span>
+</div>
+<div class="add"><a class="fa fa-plus" ng-click="adder.travel.addBill()"></a></div>

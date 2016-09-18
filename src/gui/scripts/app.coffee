@@ -79,9 +79,11 @@ app.controller 'addController', ($scope) ->
       @travel.setTitle title
   return
 
-app.directive '
-    }menu', ->
+app.directive 'menu', ->
   return templateUrl: 'menu.html', controller: 'menuController', controllerAs: 'menu'
 
 app.directive 'add', ->
   return templateUrl: 'add.html', controller: 'addController', controllerAs: 'adder'
+
+app.directive 'transport', ->
+  return templateUrl: 'add-steps/transport.html'

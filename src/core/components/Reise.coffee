@@ -1,5 +1,6 @@
 {addItem, removeItem} = require './arrayManager'
 Station = require './Station'
+Beleg = require './Beleg'
 
 class Reise
 
@@ -36,7 +37,10 @@ class Reise
     removeItem @, 'stations', station
     return
 
-  addBill: (bill) => addItem @, 'bills', bill
+  addBill: (bill = null) =>
+    if not bill?
+      bill = new Beleg 0, 0, '', 0
+    addItem @, 'bills', bill
 
   removeBill: (bill) => removeItem @, 'bills', bill
 

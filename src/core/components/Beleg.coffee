@@ -10,3 +10,13 @@ class Beleg
   # @param [String] currency The currency the bill is in (please use the 3 Letter shortcode)
   # @param [Float] amountEur The amount of the bill converted in Euro – best if provided by the bank
   constructor: (@date, @tax, @text, @amount, @currency = 'EUR', @amountEur = null) ->
+
+
+  setDate: (date) => @date = date
+  setTax: (tax) => @tax = tax
+  setText: (text) => @text = text
+  setAmount: (amount) => @amount = amount
+  setCurrency: (currency) => @currency = currency
+  setEuros: (amountEur) => @amountEur = amountEur
+
+module.exports = Beleg

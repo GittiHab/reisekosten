@@ -16,6 +16,15 @@ h2 {
 a {
   cursor: pointer; }
 
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #66676c;
+  border-radius: 3px;
+  outline: 0;
+  font-size: 16px;
+  box-sizing: border-box; }
+
 #menu {
   position: fixed;
   right: 0;
@@ -147,20 +156,27 @@ a {
   overflow: auto;
   height: 100%;
   width: 100%; }
-  #overlay .settings .table input {
-    float: left;
-    width: 20%; }
-  #overlay .settings .table span {
-    display: block;
-    clear: both; }
-
-input {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #66676c;
-  border-radius: 3px;
-  outline: 0;
-  font-size: 16px;
-  box-sizing: border-box; }
+  #overlay .settings .table {
+    position: relative;
+    width: 80%;
+    margin: 0 auto; }
+    #overlay .settings .table > div {
+      float: left;
+      width: 20%; }
+    #overlay .settings .table .transport {
+      position: absolute;
+      width: 30px;
+      left: -30px; }
+    #overlay .settings .table input {
+      border-radius: 0; }
+    #overlay .settings .table span {
+      display: block;
+      clear: both; }
+  #overlay .settings #transport {
+    float: none;
+    width: 100%; }
+    #overlay .settings #transport h3 {
+      font-size: 12px;
+      font-weight: 700; }
 
 /*# sourceMappingURL=app.css.map */

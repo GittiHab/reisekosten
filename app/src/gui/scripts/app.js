@@ -112,7 +112,7 @@
     };
   });
 
-  app.directive('}menu', function() {
+  app.directive('menu', function() {
     return {
       templateUrl: 'menu.html',
       controller: 'menuController',
@@ -125,6 +125,12 @@
       templateUrl: 'add.html',
       controller: 'addController',
       controllerAs: 'adder'
+    };
+  });
+
+  app.directive('transport', function() {
+    return {
+      templateUrl: 'add-steps/transport.html'
     };
   });
 

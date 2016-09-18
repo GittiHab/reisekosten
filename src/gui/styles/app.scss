@@ -20,6 +20,16 @@ a {
   cursor: pointer;
 }
 
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #66676c;
+  border-radius: 3px;
+  outline: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
 #menu {
   position: fixed;
   right: 0;
@@ -180,23 +190,35 @@ a {
   height: 100%;
   width: 100%;
   .table {
-    input {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    & > div {
       float: left;
       width: 20%;
+    }
+    .transport {
+      position: absolute;
+      width: 30px;
+      left: -30px;
+    }
+    input {
+      border-radius: 0;
     }
     span {
       display: block;
       clear: both;
     }
   }
+  #transport {
+    float: none;
+    width: 100%;
+
+    h3 {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
 }
 
-input {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #66676c;
-  border-radius: 3px;
-  outline: 0;
-  font-size: 16px;
-  box-sizing: border-box;
-}
