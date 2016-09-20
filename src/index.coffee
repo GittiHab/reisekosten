@@ -19,7 +19,7 @@ if not fs.existsSync global['DataPath']
 
 createWindow = ->
   # Create the browser window.
-  mainWindow = new BrowserWindow {width: 800, height: 600}
+  mainWindow = new BrowserWindow {width: 1070, height: 600}
 
   # and load the index.html of the app.
   mainWindow.loadURL 'file://' + __dirname + '/gui/html/index.html'

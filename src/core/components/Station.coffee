@@ -7,7 +7,7 @@ Reisemittel = require './Reisemittel'
 
 class Station
 
-  constructor: (@reason = '', @text = '', @city = '', @country = '', @inland = true) ->
+  constructor: (@reason = '', @text = '', @city = '', @country = 'Deutschland', @inland = true) ->
     @entryDate = null
     @exitDate = null
     @verpflegung = []
@@ -16,6 +16,10 @@ class Station
   setEntryDate: (entryDate) => @entryDate = entryDate
 
   setExitDate: (exitDate) => @exitDate = exitDate
+
+  getEntryDate: () => @entryDate
+
+  getExitDate: () => @exitDate
 
   setReason: (reason) => @reason = reason
 
@@ -34,14 +38,14 @@ class Station
 
   addVerpflegung: (verpflegung = null) =>
     if not verpflegung?
-      verpflegung = new Verpflegung 0, 0, 0, false, false, false
+      verpflegung = new Verpflegung
     addItem @, 'verpflegung', verpflegung
 
   removeVerpflegung: (verpflegung) => removeItem @, 'verpflegung', verpflegung
 
   addTransport: (transport = null, publicTransport = false) =>
     if not transport?
-      transport = if publicTransport then new Oeffentliche '', 0 else new Privat '', 0, false, 0
+      transport = if publicTransport then new Oeffentliche else new Privat
     addItem @, 'transportations', transport
 
   removeTransport: (transport) => removeItem @, 'transportations', transport
@@ -64,6 +68,12 @@ class Station
     # merge in own data
     mergeData station, data
 
+    station.createDates()
+
     return station
+
+  createDates: () ->
+    @setEntryDate new Date Date.parse @entryDate
+    @setExitDate new Date Date.parse @exitDate
 
 module.exports = Station

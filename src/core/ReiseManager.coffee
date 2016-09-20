@@ -5,22 +5,34 @@ Reise = require './components/Reise'
 class ReiseManager
 
   constructor: (@path) ->
-    @reisen = []
+    @reisen = {}
+    @number = 0
 
   add: (reise) =>
-    @reisen.push reise
+    @number++
+    year = reise.getStart().getFullYear()
+    @_addToYear year, reise
     if reise.getId() is 0
-      reise.generateId @reisen.indexOf(reise) + 1
+      reise.generateId year + '_' + (@reisen[year].indexOf(reise) + 1)
+    if reise.getNumber() is 0
+      reise.setNumber @number
     return
 
-  removei: (reiseIndex) =>
-    @_deleteReise @reisen[reiseIndex]
-    @reisen.splice reiseIndex, 1
+  _addToYear: (year, reise) =>
+    @reisen[year] ?= []
+    @reisen[year].push reise
+    return
+
+  removei: (year, reiseIndex) =>
+    @_deleteReise @reisen[year][reiseIndex]
+    @reisen[year].splice reiseIndex, 1
+    @_cleanup()
     return
 
   remove: (reise) =>
-    index = @reisen.indexOf reise
-    @removei index
+    year = reise.getStart().getFullYear()
+    index = @reisen[year].indexOf reise
+    @removei year, index
     return
 
   save: (reise = null, callback = null) =>
@@ -35,12 +47,25 @@ class ReiseManager
     return
 
   _saveReise: (reise) =>
+    # move to correct year
+    oldYear = reise.getOldStart().getFullYear()
+    year = reise.getStart().getFullYear()
+    if oldYear isnt year
+      @_addToYear year, reise
+      @removei oldYear, @reisen[oldYear].indexOf(reise)
+      @_cleanup()
+    # write file
     fs.writeFile @_pathToReise(reise), JSON.stringify reise
 
   _deleteReise: (reise) =>
     fs.unlinkSync @_pathToReise(reise), JSON.stringify reise
 
   _pathToReise: (reise) => @path + pathFs.sep + 'Travel_' + reise.getId() + '.json'
+
+  _cleanup: () ->
+    for year, reisen of @reisen
+      if reisen.length < 1
+        delete @reisen[year]
 
   open: (path) => # TODO open a travel
 

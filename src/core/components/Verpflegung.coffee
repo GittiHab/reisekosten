@@ -58,6 +58,12 @@ class Verpflegung
     # merge in own data
     mergeData flat, data
 
+    flat.createDates()
+
     return flat
+
+  createDates: () ->
+    @setFrom new Date Date.parse @from
+    @setTo new Date Date.parse @to
 
 module.exports = Verpflegung

@@ -1,12 +1,12 @@
-<h2>Ihre Reisen</h2>
 <div id="edit">
-    <a ng-click="reisen.delete()"><i class="fa fa-minus"></i> Löschen</a>
-    <a ng-click="main.openAdder()"><i class="fa fa-plus"></i> Hinzufügen</a>
-    <span></span>
+    <a ng-click="reisen.delete()">Löschen</a>
+    <a ng-click="main.openAdder()">Hinzufügen</a>
 </div>
-<h3>2015</h3>
-<div ng-repeat="reise in manager.reisen" class="travel">
-    <input type="checkbox"
-           ng-model="reisen.deleteFields[$index]"/>
-    <h4 ng-click="main.openAdder(reise)">{{ reise.getTitle() }}</h4>
+<div ng-repeat="(year, reisenListe) in manager.reisen">
+    <h3>{{ year }}</h3>
+    <div ng-repeat="reise in reisenListe" class="travel">
+        <input type="checkbox"
+               ng-model="reisen.deleteFields[year][$index]"/>
+        <h4 ng-click="main.openAdder(reise)">{{ reise.getTitle() }}</h4>
+    </div>
 </div>

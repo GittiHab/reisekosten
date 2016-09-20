@@ -53,13 +53,16 @@
   app.controller('reisenController', function($scope) {
     this.deleteFields = [];
     this["delete"] = function() {
-      var i, item, j, len, ref1;
+      var i, item, ref1, reisen, year;
       if (confirm('Unwiderruflich löschen?')) {
         ref1 = $scope.reisen.deleteFields;
-        for (i = j = 0, len = ref1.length; j < len; i = ++j) {
-          item = ref1[i];
-          if ((item != null) && item) {
-            $scope.manager.removei(i);
+        for (year in ref1) {
+          reisen = ref1[year];
+          for (i in reisen) {
+            item = reisen[i];
+            if ((item != null) && item) {
+              $scope.manager.removei(year, i);
+            }
           }
         }
         this.deleteFields = [];

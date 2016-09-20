@@ -28,6 +28,11 @@ class Beleg
     # merge in own data
     mergeData bill, data
 
+    bill.createDates()
+
     return bill
+
+  createDates: () ->
+    @setDate new Date Date.parse @date
 
 module.exports = Beleg

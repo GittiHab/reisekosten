@@ -5,24 +5,47 @@ Beleg = require './Beleg'
 
 class Reise
 
-  constructor: (@title = '') ->
+  constructor: (@title = '', fromScratch = true) ->
     @creationDate = new Date()
-    @start = null
-    @end = null
-    @number = null
+    @number = 0
+    @oldStart = 0
     @stations = []
     @bills = []
     @id = 0
+    if fromScratch
+      defaultStations = [
+        {city: 'Berlin', note: 'Reisebeginn'},
+        {city: '', note: 'Reiseziel'},
+        {city: 'Berlin', note: 'Reiseende'}]
+      for stationData in defaultStations
+        station = new Station
+        station.setCity stationData.city
+        station.setText stationData.note
+        @addStation station
 
-  setStart: (start) => @start = start
-
-  setEnd: (end) => @end = end
 
   setNumber: (number) => @number = number
 
-  getStart: () => @start
+  getNumber: () => @number
 
-  getEnd: () => @end
+  getStart: () =>
+    start = null
+    for station in @stations
+      curDate = station.getEntryDate()
+      if curDate < start or not start?
+        start = curDate
+    @oldStart = start
+    return if start? then start else new Date()
+
+  getOldStart: () => @oldStart
+
+  getEnd: () =>
+    end = null
+    for station in @stations
+      curDate = station.getExitDate()
+      if curDate < end or not end?
+        end = curDate
+    return if end? then end else new Date()
 
   getTitle: () => @title
 
@@ -34,7 +57,7 @@ class Reise
 
   addStation: (station = null) =>
     if not station?
-      station = new Station '', '', ''
+      station = new Station
     addItem @, 'stations', station
 
   removeStation: (station) =>
@@ -45,14 +68,14 @@ class Reise
 
   addBill: (bill = null) =>
     if not bill?
-      bill = new Beleg 0, 0, '', 0
+      bill = new Beleg
     addItem @, 'bills', bill
 
   removeBill: (bill) => removeItem @, 'bills', bill
 
   # Create a new travel from existing data
   @createFromData: (data) ->
-    reise = new Reise
+    reise = new Reise '', false
 
     # Add associated objects
     for station in data.stations

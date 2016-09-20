@@ -96,26 +96,24 @@ input {
       font-weight: 300;
       cursor: pointer; }
   #mainView #edit {
-    margin-bottom: 30px;
-    background-color: #74757a;
-    color: white; }
+    position: relative;
+    color: white;
+    height: 30px;
+    width: 100%; }
     #mainView #edit a {
-      position: relative;
+      position: absolute;
       display: block;
-      float: left;
-      box-sizing: border-box;
-      width: 50%;
-      padding: 5px;
       font-size: 17px;
-      text-align: center; }
-      #mainView #edit a i {
-        position: absolute;
-        left: 5px; }
-      #mainView #edit a:hover {
-        background-color: #66676c; }
-    #mainView #edit > span {
-      display: block;
-      clear: both; }
+      text-align: center;
+      color: dodgerblue;
+      top: 0; }
+      #mainView #edit a:first-child {
+        left: 0;
+        color: crimson; }
+      #mainView #edit a:last-child {
+        right: 0; }
+      #mainView #edit a.disabled {
+        color: #74757a; }
 
 #overlay {
   position: fixed;
@@ -186,7 +184,7 @@ input {
   height: 100%;
   width: 90%;
   margin: 10px auto; }
-  #overlay .settings input[type=text] {
+  #overlay .settings input, #overlay .settings select {
     width: 100%; }
   #overlay .settings .row, #overlay .settings .heading {
     position: relative;
@@ -210,6 +208,7 @@ input {
       border-top-width: 0;
       box-sizing: border-box;
       float: left;
+      height: 30px;
       width: 20%; }
       #overlay .settings .row > div.cell.last, #overlay .settings .heading > div.cell.last {
         border-right-width: 1px; }
@@ -218,11 +217,11 @@ input {
       #overlay .settings .row > div.cell.location input, #overlay .settings .row > div.cell.location select, #overlay .settings .heading > div.cell.location input, #overlay .settings .heading > div.cell.location select {
         width: 50%;
         float: left; }
-    #overlay .settings .row.row:first-of-type > div, #overlay .settings .heading.row:first-of-type > div {
+    #overlay .settings .row:nth-of-type(2) > div, #overlay .settings .heading:nth-of-type(2) > div {
       border-top-width: 1px; }
-    #overlay .settings .row.row:first-of-type div.first, #overlay .settings .heading.row:first-of-type div.first {
+    #overlay .settings .row:nth-of-type(2) div.first, #overlay .settings .heading:nth-of-type(2) div.first {
       border-top-left-radius: 3px; }
-    #overlay .settings .row.row:first-of-type div.last, #overlay .settings .heading.row:first-of-type div.last {
+    #overlay .settings .row:nth-of-type(2) div.last, #overlay .settings .heading:nth-of-type(2) div.last {
       border-top-right-radius: 3px; }
     #overlay .settings .row:nth-last-child(2) div.first, #overlay .settings .heading:nth-last-child(2) div.first {
       border-bottom-left-radius: 3px; }
@@ -244,7 +243,7 @@ input {
       #overlay .settings .row .special.transport, #overlay .settings .heading .special.transport {
         right: 100%; }
       #overlay .settings .row .special.delete, #overlay .settings .heading .special.delete {
-        color: firebrick;
+        color: crimson;
         left: 100%; }
   #overlay .settings #transport {
     float: none;

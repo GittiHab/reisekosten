@@ -39,9 +39,10 @@ app.controller 'reisenController', ($scope) ->
   @deleteFields = []
   @delete = ->
     if confirm 'Unwiderruflich löschen?'
-      for item, i in $scope.reisen.deleteFields
-        if item? and item
-          $scope.manager.removei i
+      for year, reisen of $scope.reisen.deleteFields
+        for i,item of reisen
+          if item? and item
+            $scope.manager.removei year, i
       @deleteFields = []
     return
   return
