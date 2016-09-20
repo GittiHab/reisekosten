@@ -1,5 +1,5 @@
 <div id="edit">
-    <a ng-click="reisen.delete()">Löschen</a>
+    <a ng-click="reisen.deleteSelected() && reisen.delete()" ng-class="{disabled: !reisen.deleteSelected()}">Löschen</a>
     <a ng-click="main.openAdder()">Hinzufügen</a>
 </div>
 <div ng-repeat="(year, reisenListe) in manager.reisen">

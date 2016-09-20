@@ -137,6 +137,7 @@ input {
       }
       &.disabled {
         color: #74757a;
+        cursor: default;
       }
     }
   }

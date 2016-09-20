@@ -1,7 +1,4 @@
-Date.prototype.addDays = (days) ->
-  dat = new Date this.valueOf()
-  dat.setDate(dat.getDate() + days)
-  return dat
+Date.prototype.addDays = require './addDays'
 
 getDates = (aDate, bDate) ->
   dateArray = []

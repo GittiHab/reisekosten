@@ -113,7 +113,8 @@ input {
       #mainView #edit a:last-child {
         right: 0; }
       #mainView #edit a.disabled {
-        color: #74757a; }
+        color: #74757a;
+        cursor: default; }
 
 #overlay {
   position: fixed;

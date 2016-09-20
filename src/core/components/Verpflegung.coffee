@@ -39,6 +39,8 @@ class Verpflegung
 
   setTo: (to) => @to = to
 
+  getTo: () => @to
+
   setFrom: (from) => @from = from
 
   getFrom: () => @from

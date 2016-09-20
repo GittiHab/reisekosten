@@ -52,19 +52,37 @@
 
   app.controller('reisenController', function($scope) {
     this.deleteFields = [];
-    this["delete"] = function() {
+    this.deleteSelected = function() {
       var i, item, ref1, reisen, year;
+      ref1 = $scope.reisen.deleteFields;
+      for (year in ref1) {
+        reisen = ref1[year];
+        for (i in reisen) {
+          item = reisen[i];
+          if ((item != null) && item) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+    this["delete"] = function() {
+      var deleteTravel, i, item, ref1, reisen, year;
       if (confirm('Unwiderruflich löschen?')) {
+        deleteTravel = [];
         ref1 = $scope.reisen.deleteFields;
         for (year in ref1) {
           reisen = ref1[year];
           for (i in reisen) {
             item = reisen[i];
             if ((item != null) && item) {
-              $scope.manager.removei(year, i);
+              deleteTravel.push($scope.manager.reisen[year][i]);
             }
           }
         }
+        deleteTravel.map(function(travel) {
+          return $scope.manager.remove(travel);
+        });
         this.deleteFields = [];
       }
     };

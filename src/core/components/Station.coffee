@@ -5,16 +5,15 @@ Privat = require './Privat'
 Verpflegung = require './Verpflegung'
 Reisemittel = require './Reisemittel'
 getDates = require '../getDates'
+Date.prototype.addDays = require '../addDays'
+Date.prototype.resetTime = require '../resetTime'
 
 class Station
 
   constructor: (@reason = '', @text = '', @city = '', @country = 'Deutschland', @inland = true) ->
     defaultDate = new Date()
-    defaultDate.setHours 0
-    defaultDate.setMinutes 0
-    defaultDate.setSeconds 0
-    defaultDate.setMilliseconds 0
-    @_entryDate = defaultDate
+
+    @_entryDate = defaultDate.resetTime()
     @exitDate = null
     @verpflegung = []
     @transportations = []
@@ -25,11 +24,35 @@ class Station
     if not @_entryDate? or not @exitDate?
       return
     days = getDates @_entryDate, @exitDate
+    # remove unneeded
+    times = days.map (day) -> day.getTime()
+    remove = []
+    for flat in @verpflegung
+      if times.indexOf(flat.getFrom().getTime()) < 0
+        remove.push flat
+      else
+        @_setEndDate flat
+    for flat in remove
+      @removeVerpflegung flat
+    # add new
     for day in days
       if not @_containsDate day
         flat = new Verpflegung
-        flat.setFrom day
+        flat.setFrom day.resetTime()
+        @_setEndDate flat
         @verpflegung.push flat
+    # Set start and end time
+    @_setTime @verpflegung[0].from, @_entryDate.getHours(), @_entryDate.getMinutes()
+    @_setTime @verpflegung[@verpflegung.length - 1].to, @exitDate.getHours(), @exitDate.getMinutes()
+
+  _setEndDate: (flat) =>
+    endDate = @exitDate.addDays 1
+    flat.setTo endDate.resetTime()
+    return flat
+
+  _setTime: (date, hours, minutes) ->
+    date.setHours hours
+    date.setMinutes minutes
 
   _containsDate: (date) ->
     for flat in @verpflegung
@@ -45,7 +68,7 @@ class Station
     if date?
       @_entryDate = date
       if not @exitDate?
-        @exitDate = new Date (@_entryDate.getTime() + 1000*3600*24)
+        @exitDate = new Date (@_entryDate.getTime() + 1000 * 3600 * 24)
     else
       return @_entryDate
 

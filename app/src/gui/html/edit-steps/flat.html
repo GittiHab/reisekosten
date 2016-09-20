@@ -11,10 +11,10 @@
 </div>
 <div ng-if="adder.fields.stationPicker"
      class="flats row" ng-repeat="flat in adder.fields.stationPicker.verpflegung | orderBy: 'from'">
-    <div class="cell from first"><input type="date"
+    <div class="cell from first"><input type="datetime-local"
                              ng-model="flat.from" disabled /></div>
     <div class="cell to"><input type="time"
-                             ng-model="flat.to"/></div>
+                             ng-model="flat.to" disabled/></div>
     <div class="cell bf"><input type="checkbox"
                            ng-model="flat.breakfast"/></div>
     <div class="cell lu"><input type="checkbox"
