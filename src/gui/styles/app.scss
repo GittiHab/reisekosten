@@ -237,7 +237,7 @@ input {
     }
     input {
       border: 0;
-      &[type=date] {
+      &[type=date], &[type=datetime-local], &[type=time] {
         font-size: 12px;
       }
     }
@@ -311,6 +311,9 @@ input {
         color: crimson;
         left: 100%;
       }
+    }
+    .transports .cell {
+      height: 40px;
     }
   }
   #transport {

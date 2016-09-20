@@ -4,26 +4,57 @@ Oeffentliche = require './Oeffentliche'
 Privat = require './Privat'
 Verpflegung = require './Verpflegung'
 Reisemittel = require './Reisemittel'
+getDates = require '../getDates'
 
 class Station
 
   constructor: (@reason = '', @text = '', @city = '', @country = 'Deutschland', @inland = true) ->
-    @entryDate = null
+    defaultDate = new Date()
+    defaultDate.setHours 0
+    defaultDate.setMinutes 0
+    defaultDate.setSeconds 0
+    defaultDate.setMilliseconds 0
+    @_entryDate = defaultDate
     @exitDate = null
     @verpflegung = []
     @transportations = []
 
-  setEntryDate: (entryDate) => @entryDate = entryDate
+  setEntryDate: (entryDate) => @_entryDate = entryDate
+
+  generateVerpflegung: () ->
+    if not @_entryDate? or not @exitDate?
+      return
+    days = getDates @_entryDate, @exitDate
+    for day in days
+      if not @_containsDate day
+        flat = new Verpflegung
+        flat.setFrom day
+        @verpflegung.push flat
+
+  _containsDate: (date) ->
+    for flat in @verpflegung
+      if flat.getFrom().getTime() is date.getTime()
+        return true
+    return false
 
   setExitDate: (exitDate) => @exitDate = exitDate
 
-  getEntryDate: () => @entryDate
+  getEntryDate: () => @_entryDate
+
+  entryDate: (date = null) =>
+    if date?
+      @_entryDate = date
+      if not @exitDate?
+        @exitDate = new Date (@_entryDate.getTime() + 1000*3600*24)
+    else
+      return @_entryDate
 
   getExitDate: () => @exitDate
 
   setReason: (reason) => @reason = reason
 
   setText: (text) => @text = text
+  getText: () => @text
 
   setLocation: (city, country) =>
     @setCity city
@@ -32,7 +63,9 @@ class Station
   setCity: (city) => @city = city
   setcountry: (country) => @country = country
 
-  getLocation: () => @city + ' ' + @country
+  getLocation: () => @city + ', ' + @country
+
+  getDropdownName: () => @getText() + ': ' + @getLocation()
 
   setInland: (inland) => @inland = inland
 
@@ -73,7 +106,7 @@ class Station
     return station
 
   createDates: () ->
-    @setEntryDate new Date Date.parse @entryDate
+    @setEntryDate new Date Date.parse @_entryDate
     @setExitDate new Date Date.parse @exitDate
 
 module.exports = Station

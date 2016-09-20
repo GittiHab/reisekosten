@@ -196,7 +196,7 @@ input {
       text-align: center; }
     #overlay .settings .row input, #overlay .settings .heading input {
       border: 0; }
-      #overlay .settings .row input[type=date], #overlay .settings .heading input[type=date] {
+      #overlay .settings .row input[type=date], #overlay .settings .row input[type=datetime-local], #overlay .settings .row input[type=time], #overlay .settings .heading input[type=date], #overlay .settings .heading input[type=datetime-local], #overlay .settings .heading input[type=time] {
         font-size: 12px; }
     #overlay .settings .row > span, #overlay .settings .heading > span {
       display: block;
@@ -245,6 +245,8 @@ input {
       #overlay .settings .row .special.delete, #overlay .settings .heading .special.delete {
         color: crimson;
         left: 100%; }
+    #overlay .settings .row .transports .cell, #overlay .settings .heading .transports .cell {
+      height: 40px; }
   #overlay .settings #transport {
     float: none;
     width: 100%; }

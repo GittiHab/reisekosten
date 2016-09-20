@@ -1,5 +1,5 @@
 <select ng-model="adder.fields.stationPicker"
-        ng-options="station.getLocation() for station in adder.travel.stations"></select>
+        ng-options="station.getDropdownName() for station in adder.travel.stations"></select>
 <div ng-if="adder.fields.stationPicker"
      class="heading">
     <div class="cell from"><h3>Von</h3></div>
@@ -12,8 +12,8 @@
 <div ng-if="adder.fields.stationPicker"
      class="flats row" ng-repeat="flat in adder.fields.stationPicker.verpflegung | orderBy: 'from'">
     <div class="cell from first"><input type="date"
-                             ng-model="flat.from"/></div>
-    <div class="cell to"><input type="date"
+                             ng-model="flat.from" disabled /></div>
+    <div class="cell to"><input type="time"
                              ng-model="flat.to"/></div>
     <div class="cell bf"><input type="checkbox"
                            ng-model="flat.breakfast"/></div>
@@ -21,10 +21,5 @@
                            ng-model="flat.lunch"/></div>
     <div class="cell di last"><input type="checkbox"
                            ng-model="flat.dinner"/></div>
-    <div ng-click="adder.fields.stationPicker.removeVerpflegung(flat)" class="delete special cell"
-         title="Diese Pauschale löschen">
-        <i class="fa fa-times"></i></div>
     <span></span>
 </div>
-<div ng-if="adder.fields.stationPicker"
-     class="add"><a class="fa fa-plus" ng-click="adder.fields.stationPicker.addVerpflegung()"></a></div>

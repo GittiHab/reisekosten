@@ -26,7 +26,7 @@ class Verpflegung
     # Given rate
     flat = @number * @dayRate[key]
     # Inclusive flats
-    flat *= (@breakfast * @rates.breakfast + @lunch * @rates.lunch + @dinner * @rates.dinner)/100
+    flat *= (@breakfast * @rates.breakfast + @lunch * @rates.lunch + @dinner * @rates.dinner) / 100
 
   # Find out how long the stay was
   # halfday = 8-24 hours
@@ -40,6 +40,8 @@ class Verpflegung
   setTo: (to) => @to = to
 
   setFrom: (from) => @from = from
+
+  getFrom: () => @from
 
   setNumber: (number) => @number = number
 
