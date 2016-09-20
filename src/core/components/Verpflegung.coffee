@@ -10,7 +10,7 @@ class Verpflegung
   # @param [Boolean] lunch If the flat should include lunch
   # @param [Boolean] dinner If the flat should include dinner
   # @param [Integer] number For how many people doese this flat count
-  constructor: (@dayRate = 0, @from = 0, @to = 0, @breakfast = false, @lunch = false, @dinner = false, @number = 1) ->
+  constructor: (@dayRate = 0, @from = 0, @to = 0, @breakfast = true, @lunch = true, @dinner = true, @number = 1) ->
     @rates =
       breakfast: 20
       lunch: 40

@@ -98,6 +98,11 @@ class Station
       station.addVerpflegung flat
     delete data.verpflegung
 
+    # backwards compatibility
+    if data['entryDate']?
+      data['_entryDate'] = data['entryDate']
+      delete data['entryDate']
+
     # merge in own data
     mergeData station, data
 
