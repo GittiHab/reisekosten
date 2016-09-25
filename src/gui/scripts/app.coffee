@@ -32,6 +32,9 @@ app.controller 'mainController', ($scope) ->
   @isAdding = () -> @adding
   dataPath = remote.getGlobal 'DataPath'
   $scope.manager = ReiseManager.openProject dataPath
+  @export = (year) ->
+    path = remote.dialog.showSaveDialog()
+    $scope.manager.exportXLS year, path
   return
 
 

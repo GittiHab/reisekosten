@@ -1,6 +1,7 @@
 fs = require 'fs'
 pathFs = require 'path'
 Reise = require './components/Reise'
+XLSExporter = require '../export/XLSExporter'
 
 class ReiseManager
 
@@ -100,5 +101,17 @@ class ReiseManager
   @_createProject: (path) ->
     fs.writeFileSync path + pathFs.sep + 'settings.json', '{"version": "0.9.0"}'
     return new ReiseManager path
+
+  # Export all travels of a given year to a xls-sheet to the given path
+  # @param [String] year The year which to export
+  # @param [String] path The absolute path where to save the exported file
+  # @returns [Promise] The saving promise
+  exportXLS: (year, path) =>
+    if not @reisen[year]?
+      return
+    exporter = new XLSExporter
+    exportPromise = exporter.export @reisen[year]
+    exportPromise.then (data) ->
+      fs.writeFile path, data, encoding: 'base64'
 
 module.exports = ReiseManager

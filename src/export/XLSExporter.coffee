@@ -21,6 +21,7 @@ class XLSExporter extends Exporter
   _generateYearOverview: (data) =>
     @data = data
     @countries = []
+    @taxes = []
     workbook = new ExcelBuilder.Workbook
     @_createDefaultStyle workbook
     # Now add the data
@@ -42,28 +43,45 @@ class XLSExporter extends Exporter
         @_createCell('Stationen')
         @_createCell('Transportkosten')
         @_createCell('Pauschalen')
-        @_createCell('Belege (nur MwSt.)')
-        @_createCell @flatSheetName+'!B3*5', type: 'formula'
+        @_createCell('Sonstige')
+        #        @_createCell @flatSheetName+'!B3*5', type: 'formula'
       ]
     ]
     for travel in @data
+      @_addCountries travel.getCountries()
       row = [
         @_createCell(travel.getStart())
         @_createCell(travel.getEnd())
         @_createCell(travel.getTitle())
         @_createCell(travel.serializeStations())
-        @_createCell(travel.calculateTransport(false))
-        @_createCell(travel.calculateFlats(false))
-        @_createCell(travel.calculateBills())
+        @_createCell(travel.calculateTransport(false), type: 'formula')
+        @_createCell(travel.calculateFlats(false), type: 'formula')
+        @_createCell(travel.calculateBills(), type: 'formula')
       ]
+      row = @_attachTaxes row, travel.calculateTaxes()
       fileData.push row
-      @_addCountries travel.getCountries()
+    fileData[0] = @_appendTaxHeights fileData[0]
     return fileData
+
+  _attachTaxes: (row, taxes) =>
+    rowl = row.length
+    for tax, total of taxes
+      taxi = @taxes.indexOf tax
+      if taxi < 0
+        @taxes.push tax
+        taxi = @taxes.length - 1
+      row[rowl + taxi + 1] = total
+    return row
+
+  _appendTaxHeights: (row) =>
+    for tax in @taxes
+      row.push 'MwSt. ' + tax + '%'
+    return row
 
   _addCountries: (countries = []) =>
     for country in countries
       if @countries.indexOf(country) < 0
-        @countries.push country
+        @countries.push country.toUpperCase().replace(/\ ,/g, '')
     return
 
   _createDefaultStyle: (workbook) =>
@@ -79,11 +97,25 @@ class XLSExporter extends Exporter
   _createCell: (value, options = {}) =>
     if not options.style?
       options.style = @defaultStyle
+    if options.type is 'formula'
+      value = @_replacePlaceholders value
     return {
       value: value,
       metadata: options
     }
 
+  _replacePlaceholders: (value) =>
+    if typeof value isnt 'string'
+      return value
+
+    value.replace('{{pkw.km}}', @flatSheetName + '!B1')
+    value.replace(/\{\{([A-Z]+)\.(hd|fd)\}\}/g, (found) ->
+      console.log found
+      row = if found[2] is 'hd' then 4 else 3
+      abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      col = abc[@countries.indexOf(found[1])]
+      return @flatSheetName + '!' + col + row)
+    return value
 
   _fillPresetValues: =>
     flatData = []

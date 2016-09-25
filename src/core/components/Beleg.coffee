@@ -21,6 +21,22 @@ class Beleg
   setCurrency: (currency) => @currency = currency
   setEuros: (amountEur) => @amountEur = amountEur
 
+  # @returns [Float] Returns the amount of you receive back for this bill.
+  #   For German bills this is the amount of tax paid
+  #   For other bills it is the total amount in Euros (if tax is 0)
+  getAmountBack: =>
+    amount = if @currency isnt 'EUR' then @amountEur else @amount
+    return amount
+
+  getTax: => @tax
+
+  getTaxAmount: =>
+    if @tax = 0
+      return 0
+    # calculate tax
+    return 100/(100 + @tax) * @getAmountBack()
+
+
   # Create a new bill from existing data
   @createFromData: (data) ->
     bill = new Beleg

@@ -2,6 +2,7 @@
 mergeData = require '../mergeObjects'
 Station = require './Station'
 Beleg = require './Beleg'
+Reisemittel = require './Reisemittel'
 
 class Reise
 
@@ -55,6 +56,8 @@ class Reise
 
   generateId: (index) => @id = index + '_' + Math.round Math.random() * 1000
 
+  getCountries: => (station.getCountry() for station in @stations)
+
   addStation: (station = null) =>
     if not station?
       station = new Station
@@ -72,6 +75,60 @@ class Reise
     addItem @, 'bills', bill
 
   removeBill: (bill) => removeItem @, 'bills', bill
+
+  # @returns [String] The list of all stations as a string
+  serializeStations: =>
+    string = ''
+    for station, i in @stations
+      string += station.getCountry()
+      if i isnt @stations.length - 1
+        string += '; '
+    return string
+
+  # @see Station.calculateTransport
+  calculateTransport: (includeRates = true) =>
+    total = 0
+    for station in @stations
+      total += station.calculateFlats includeRates
+    return
+
+  # @see Station.calculateFlats
+  calculateFlats: (includeFlats = true) =>
+    total = 0
+    for station in @stations
+      total += station.calculateFlats includeFlats
+    return
+
+  # Calculates the total amount you would receive back from the tax for the bills
+  calculateBills: =>
+    total = 0
+    for bill in @bills
+      total += bill.getAmountBack()
+    return total
+
+  # Calculates all total tax amounts for the different tax heights
+  calculateTaxes: =>
+    taxes = {}
+    @_transportTax taxes
+    @_billsTax taxes
+    return taxes
+
+  # Calculate the tax total for the transportation and save it into taxObj
+  _transportTax: (taxObj) =>
+    taxObj[Reisemittel.taxHeight] = 0
+    for station in @stations
+      taxObj[Reisemittel.taxHeight] = station.getTransportTax()
+
+  # Calculate the different tax totals for all bills and save it into taxObj
+  _billsTax: (taxObj) =>
+    for bill in @bills
+      tax = bill.getTax()
+      if tax is 0
+        continue
+      if taxObj[tax]?
+        taxObj[tax] += bill.getTaxAmount()
+      else
+        taxObj[tax] = bill.getTaxAmount()
 
   # Create a new travel from existing data
   @createFromData: (data) ->

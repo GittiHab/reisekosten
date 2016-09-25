@@ -6,7 +6,7 @@ class Privat extends Reisemittel
   # @param [Integer] distance The distance travelled with this transportation type in km
   # @param [Boolean] business Has the transportation been provided by the company
   # @param [Boolean] motorcycle If the transportation type was a car of motorcycle
-  constructor: (@name, @distance, @business, @rate, @motorcycle = false) ->
+  constructor: (@name = '', @distance = 0, @business = false, @rate = 0, @motorcycle = false) ->
 
   setDistance: (distance) => @distance = distance
 
@@ -32,5 +32,15 @@ class Privat extends Reisemittel
     mergeData transport, data
 
     return transport
+
+  getAmountBack: (country, placeholders) =>
+    #      TODO: Use saved flats
+    #      if includeRates
+    #        tmp_total *= flat
+    type = if @motorcycle then 'mc' else 'pkw'
+    if @business then type += '.business'
+    return @distance + '*{{' + type + '.km}}'
+
+  getTax: -> 0
 
 module.exports = Privat

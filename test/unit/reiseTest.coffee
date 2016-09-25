@@ -10,14 +10,19 @@ describe 'Reise', () ->
     reise = new Reise 'My Travel'
     station = new Station 'Reason', '', 'Germany'
     reise.addStation station
-    expect(reise.stations.length).to.equal 1
-    reise.removeStation station
-    expect(reise.stations.length).to.equal 1
-    stations = []
-    for i in [1..4]
-      newStation = new Station '', '', ''
-      reise.addStation newStation
-      stations.push newStation
-    expect(reise.stations.length).to.equal 5
-    reise.removeStation stations[0]
     expect(reise.stations.length).to.equal 4
+    reise.removeStation station
+    expect(reise.stations.length).to.equal 3
+    reise.removeStation reise.stations[0]
+    expect(reise.stations.length).to.equal 3
+
+  it 'should return the correct countries', ->
+    reise = new Reise ''
+    reise.stations = [
+      {getCountry: -> 'Deutschland'}
+      {getCountry: -> 'China'}
+      {getCountry: -> 'Japan'}
+      {getCountry: -> 'Korea'}
+      {getCountry: -> 'Deutschland'}
+      ]
+    expect(reise.getCountries()).to.eql ['Deutschland', 'China', 'Japan', 'Korea', 'Deutschland']

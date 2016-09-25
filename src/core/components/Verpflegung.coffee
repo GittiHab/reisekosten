@@ -10,23 +10,26 @@ class Verpflegung
   # @param [Boolean] lunch If the flat should include lunch
   # @param [Boolean] dinner If the flat should include dinner
   # @param [Integer] number For how many people doese this flat count
-  constructor: (@dayRate = 0, @from = 0, @to = 0, @breakfast = true, @lunch = true, @dinner = true, @number = 1) ->
+  constructor: (@dayRate = {halfday: 0, fullday: 0}, @from = 0, @to = 0, @breakfast = true, @lunch = true, @dinner = true, @number = 1) ->
     @rates =
       breakfast: 20
       lunch: 40
       dinner: 40
-    @halfDayLimit = 8 # how long should you have stayed at least
+    @halfDayLimit = 8 # how long should you have stayed at least (in hours)
 
   getFlat: () =>
     # fullday/halfday?
-    time = @_getTimeLength()
-    if time < @halfDayLimit
+    key = @_getLengthCategory()
+    if key is 'none'
       return 0
-    key = if time < 24 then 'halfday' else 'fullday'
     # Given rate
     flat = @number * @dayRate[key]
     # Inclusive flats
-    flat *= (@breakfast * @rates.breakfast + @lunch * @rates.lunch + @dinner * @rates.dinner) / 100
+    flat *= @_calculateFood()
+    return flat
+
+  _calculateFood: =>
+    return (@breakfast * @rates.breakfast + @lunch * @rates.lunch + @dinner * @rates.dinner) / 100
 
   # Find out how long the stay was
   # halfday = 8-24 hours
@@ -36,6 +39,15 @@ class Verpflegung
     if inHours
       time /= 1000 * 60 * 60
     return time
+
+  _getLengthCategory: =>
+    time = @_getTimeLength()
+    if time < @halfDayLimit
+      return 'none'
+    else if time < 24
+      return 'halfday'
+    else
+      return 'fullday'
 
   setTo: (to) => @to = to
 
@@ -54,6 +66,15 @@ class Verpflegung
   setLunch: (lunch) => @lunch = lunch
 
   setDinner: (dinner) => @dinner = dinner
+
+  getAmountBack: (country, placeholders) =>
+    if not placeholders
+      return @getFlat()
+    category = @_getLengthCategory()
+    if category is 'none'
+      return 0
+    type = if category is 'fullday' then 'fd' else 'hd'
+    return  @_calculateFood() + '*{{' + country.toUpperCase().replace(/\ ,/g, '') + '.' + type + '}}'
 
   # Create a new flat from existing data
   @createFromData: (data) ->

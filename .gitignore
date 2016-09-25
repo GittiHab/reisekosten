@@ -1,5 +1,6 @@
 .idea/
 node_modules/
 app/**/*.js*
+app/**/*.css*
 icons/
 build/

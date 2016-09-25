@@ -3,7 +3,7 @@
     <a ng-click="main.openAdder()">Hinzufügen</a>
 </div>
 <div ng-repeat="(year, reisenListe) in manager.reisen">
-    <h3>{{ year }}</h3>
+    <h3>{{ year }} <span ng-click="main.export(year)"><i class="fa fa-file-excel-o"></i></span></h3>
     <div ng-repeat="reise in reisenListe" class="travel">
         <input type="checkbox"
                ng-model="reisen.deleteFields[year][$index]"/>

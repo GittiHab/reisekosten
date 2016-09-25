@@ -20,6 +20,8 @@ class Station
 
   setEntryDate: (entryDate) => @_entryDate = entryDate
 
+  getCountry: => @country
+
   generateVerpflegung: () ->
     if not @_entryDate? or not @exitDate?
       return
@@ -105,6 +107,39 @@ class Station
     addItem @, 'transportations', transport
 
   removeTransport: (transport) => removeItem @, 'transportations', transport
+
+  # Calculate the total transportation cost you receive back
+  # @param [Boolean] includeRates If to already include the default/saved rates values. If false placeholders are used.
+  #   Placeholders:
+  #     - {{pkw.km}} The kilometer rate for (own) cars
+  #     - {{mc.km}} The kilometer rate for (own) motorcycles
+  #     - {{pkw.business.km}} The rate for business cars
+  #     - {{mc.business.km}} The rate for business motorcycles
+  calculateTransport: (includeRates = true) =>
+    total = if includeRates then 0 else ''
+    for transport, i in @transportations
+      total += transport.getAmountBack not includeRates
+      if not includeRates and i isnt @transportations.length - 1 then total += '+'
+    return total
+
+  # Calculate the total flat you should receive for the given flats
+  # @param [Boolean] includeFlats If to already include the default/saved flat values. If false placeholders are used.
+  #   Placeholders:
+  #     - {{COUNTRY.fd}} The full day flat for the country, where COUNTRY will be the country name
+  #     - {{COUNTRY.hd}} The half day flat for the country
+  calculateFlats: (includeFlats = true) =>
+    total = if includeFlats then 0 else ''
+    for flat, i in @verpflegung
+      total += flat.getAmountBack @country, not includeFlats
+      if not includeFlats and i isnt @verpflegung.length - 1 then total += '+'
+    return total
+
+  # Calculate all tax paid while using transports
+  getTransportTax: =>
+    tax = 0
+    for transport in @transportations
+      tax += transport.getTax()
+    return tax
 
   # Create a new station from existing data
   @createFromData: (data) ->

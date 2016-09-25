@@ -18,4 +18,8 @@ class Oeffentliche extends Reisemittel
 
     return transport
 
+  getAmountBack: => @amount
+
+  getTax: => @amount * 100/(100 + Reisemittel.taxHeight)
+
 module.exports = Oeffentliche
