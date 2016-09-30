@@ -20,7 +20,9 @@ class Station
 
   setEntryDate: (entryDate) => @_entryDate = entryDate
 
-  getCountry: => @country
+  # @param [Boolean] asKey If the country should made uppercase and special chars removed
+  # @returns [String] The country where this station lies in
+  getCountry: (asKey = false) => if asKey then @country.toUpperCase().replace(/(?:\W)/g, '') else @country
 
   generateVerpflegung: () ->
     if not @_entryDate? or not @exitDate?
@@ -130,7 +132,7 @@ class Station
   calculateFlats: (includeFlats = true) =>
     total = if includeFlats then 0 else ''
     for flat, i in @verpflegung
-      total += flat.getAmountBack @country, not includeFlats
+      total += flat.getAmountBack @getCountry(true), not includeFlats
       if not includeFlats and i isnt @verpflegung.length - 1 then total += '+'
     return total
 

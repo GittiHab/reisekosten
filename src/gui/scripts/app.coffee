@@ -33,8 +33,9 @@ app.controller 'mainController', ($scope) ->
   dataPath = remote.getGlobal 'DataPath'
   $scope.manager = ReiseManager.openProject dataPath
   @export = (year) ->
-    path = remote.dialog.showSaveDialog()
-    $scope.manager.exportXLS year, path
+    path = remote.dialog.showSaveDialog defaultPath: year + '.xlsx', buttonLabel: 'Exportieren'
+    if path?
+      $scope.manager.exportXLS year, path
   return
 
 

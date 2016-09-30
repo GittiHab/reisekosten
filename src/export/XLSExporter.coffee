@@ -47,8 +47,8 @@ class XLSExporter extends Exporter
         #        @_createCell @flatSheetName+'!B3*5', type: 'formula'
       ]
     ]
-    for travel in @data
-      @_addCountries travel.getCountries()
+    for travel, i in @data
+      @_addCountries travel.getCountries true
       row = [
         @_createCell(travel.getStart())
         @_createCell(travel.getEnd())
@@ -108,13 +108,13 @@ class XLSExporter extends Exporter
     if typeof value isnt 'string'
       return value
 
-    value.replace('{{pkw.km}}', @flatSheetName + '!B1')
-    value.replace(/\{\{([A-Z]+)\.(hd|fd)\}\}/g, (found) ->
-      console.log found
-      row = if found[2] is 'hd' then 4 else 3
+    _this = @
+    value = value.replace('{{pkw.km}}', @flatSheetName + '!B1')
+    value = value.replace(/\{\{([A-Z]+)\.(hd|fd)\}\}/g, (found, country, type) ->
+      row = if type is 'hd' then 4 else 3
       abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-      col = abc[@countries.indexOf(found[1])]
-      return @flatSheetName + '!' + col + row)
+      col = abc[_this.countries.indexOf(country) + 1]
+      return _this.flatSheetName + '!' + col + row)
     return value
 
   _fillPresetValues: =>

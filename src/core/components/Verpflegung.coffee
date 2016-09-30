@@ -74,7 +74,7 @@ class Verpflegung
     if category is 'none'
       return 0
     type = if category is 'fullday' then 'fd' else 'hd'
-    return  @_calculateFood() + '*{{' + country.toUpperCase().replace(/\ ,/g, '') + '.' + type + '}}'
+    return  @_calculateFood() + '*{{' + country + '.' + type + '}}'
 
   # Create a new flat from existing data
   @createFromData: (data) ->

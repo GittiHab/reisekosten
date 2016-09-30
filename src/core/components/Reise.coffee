@@ -56,7 +56,7 @@ class Reise
 
   generateId: (index) => @id = index + '_' + Math.round Math.random() * 1000
 
-  getCountries: => (station.getCountry() for station in @stations)
+  getCountries: (asKey = false) => (station.getCountry(asKey) for station in @stations)
 
   addStation: (station = null) =>
     if not station?
@@ -90,14 +90,14 @@ class Reise
     total = 0
     for station in @stations
       total += station.calculateFlats includeRates
-    return
+    return total
 
   # @see Station.calculateFlats
   calculateFlats: (includeFlats = true) =>
     total = 0
     for station in @stations
       total += station.calculateFlats includeFlats
-    return
+    return total
 
   # Calculates the total amount you would receive back from the tax for the bills
   calculateBills: =>
