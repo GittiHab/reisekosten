@@ -13,10 +13,10 @@ describe 'Verpflegung', () ->
 
     verpflegung = new Verpflegung rate, from, to, true, true, true
     expect(verpflegung.getFlat()).to.equal 24
-    expect(verpflegung.getAmountBack 'Deutschland', true).to.equal '1*{{DEUTSCHLAND.hd}}'
+    expect(verpflegung.getAmountBack 'DEUTSCHLAND', true).to.equal '1*{{DEUTSCHLAND.hd}}'
     verpflegung.setTo new Date Date.parse('December 25, 2015 00:00:00')
     expect(verpflegung.getFlat()).to.equal 40
-    expect(verpflegung.getAmountBack 'Deutschland', true).to.equal '1*{{DEUTSCHLAND.fd}}'
+    expect(verpflegung.getAmountBack 'DEUTSCHLAND', true).to.equal '1*{{DEUTSCHLAND.fd}}'
     verpflegung.setTo new Date Date.parse('December 24, 2015 07:59:59')
     expect(verpflegung.getFlat()).to.equal 0
-    expect(verpflegung.getAmountBack 'Deutschland', true).to.equal 0
+    expect(verpflegung.getAmountBack 'DEUTSCHLAND', true).to.equal 0
