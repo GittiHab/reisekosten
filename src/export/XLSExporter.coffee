@@ -70,12 +70,12 @@ class XLSExporter extends Exporter
       if taxi < 0
         @taxes.push tax
         taxi = @taxes.length - 1
-      row[rowl + taxi + 1] = total
+      row[rowl + taxi] = @_createCell total
     return row
 
   _appendTaxHeights: (row) =>
     for tax in @taxes
-      row.push 'MwSt. ' + tax + '%'
+      row.push @_createCell 'MwSt. ' + tax + '%'
     return row
 
   _addCountries: (countries = []) =>
@@ -88,7 +88,6 @@ class XLSExporter extends Exporter
     @defaultStyle = workbook.getStyleSheet().createFormat
       font:
         color: 0x0000000
-        bold: true
       fill:
         type: 'pattern'
         patternType: 'solid'
@@ -96,7 +95,7 @@ class XLSExporter extends Exporter
 
   _createCell: (value, options = {}) =>
     if not options.style?
-      options.style = @defaultStyle
+      options.style = @defaultStyle.id
     if options.type is 'formula'
       value = @_replacePlaceholders value
     return {
@@ -126,7 +125,7 @@ class XLSExporter extends Exporter
       @_createCell 0
     ]
     ## Day-flat
-    flatData.push ['Dauer'].concat @countries
+    flatData.push [@_createCell 'Dauer'].concat (@_createCell country for country in @countries)
     # 24-hours
     flatData.push [@_createCell '24 Stunden']
     # 8-24hours
