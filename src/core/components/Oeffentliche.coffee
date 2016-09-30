@@ -3,6 +3,8 @@ mergeData = require '../mergeObjects'
 
 class Oeffentliche extends Reisemittel
 
+  @roundAccuracy = 100
+
   constructor: (@name = '', @amount = 0) ->
 
   setAmount: (amount) => @amount = amount
@@ -20,6 +22,8 @@ class Oeffentliche extends Reisemittel
 
   getAmountBack: => @amount
 
-  getTax: => @amount * 100/(100 + Reisemittel.taxHeight)
+  getTax: =>
+    accuracy = Oeffentliche.roundAccuracy
+    return (Math.round @amount * Reisemittel.taxHeight/(100 + Reisemittel.taxHeight) * accuracy) / accuracy
 
 module.exports = Oeffentliche

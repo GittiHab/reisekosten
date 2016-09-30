@@ -2,6 +2,8 @@ mergeData = require '../mergeObjects'
 
 class Beleg
 
+  @roundingAccuracy = 100
+
   # Create a new Beleg (Bill)
   # @param [Date] date The date on the bill
   # @param [Integer] tax
@@ -11,7 +13,7 @@ class Beleg
   # @param [Float] amount The amount of the bill as stated on it in the original currency
   # @param [String] currency The currency the bill is in (please use the 3 Letter shortcode)
   # @param [Float] amountEur The amount of the bill converted in Euro – best if provided by the bank
-  constructor: (@date = 0, @tax = 0, @text = '', @amount = 0, @currency = 'EUR', @amountEur = null) ->
+  constructor: (@date = 0, @tax = 0, @text = '', @amount = 0, @currency = 'EUR', @amountEur = 0) ->
 
 
   setDate: (date) => @date = date
@@ -31,15 +33,21 @@ class Beleg
   getTax: => @tax
 
   getTaxAmount: =>
-    if @tax = 0
+    if @tax is 0
       return 0
+    accuracy = Beleg.roundingAccuracy
     # calculate tax
-    return 100/(100 + @tax) * @getAmountBack()
+    return (Math.round @tax/(100 + @tax) * @getAmountBack() * accuracy) / accuracy
 
 
   # Create a new bill from existing data
   @createFromData: (data) ->
     bill = new Beleg
+
+    # update old files
+    if data.amounEur?
+      data.amountEur = data.amounEur
+      delete data.amounEur
 
     # merge in own data
     mergeData bill, data

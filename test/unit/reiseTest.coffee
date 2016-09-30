@@ -26,3 +26,6 @@ describe 'Reise', () ->
       {getCountry: -> 'Deutschland'}
       ]
     expect(reise.getCountries()).to.eql ['Deutschland', 'China', 'Japan', 'Korea', 'Deutschland']
+
+  it 'should calculate the correct sum', ->
+

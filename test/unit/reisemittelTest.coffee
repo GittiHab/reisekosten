@@ -19,3 +19,9 @@ describe 'Reisemittel', () ->
 
     r2 = new Oeffentliche '', 1200
     expect(r2.getAmountBack('Deutschland', true)).to.equal 1200
+  it 'should calculate the correct tax', ->
+    r1 = new Privat
+    expect(r1.getTax()).to.equal 0
+
+    r2 = new Oeffentliche '', 600
+    expect(r2.getTax()).to.equal 95.8
