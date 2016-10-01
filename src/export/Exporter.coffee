@@ -25,7 +25,7 @@ class Exporter
 
   @formatDate: (date) ->
     day = date.getDate()
-    month = date.getMonth()
+    month = date.getMonth() + 1
     year = date.getFullYear()
     return "#{day}.#{month}.#{year}"
 

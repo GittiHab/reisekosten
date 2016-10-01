@@ -44,7 +44,7 @@ class Reise
     end = null
     for station in @stations
       curDate = station.getExitDate()
-      if curDate < end or not end?
+      if curDate > end or not end?
         end = curDate
     return if end? then end else new Date()
 
