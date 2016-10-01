@@ -7,6 +7,7 @@ Reisemittel = require './Reisemittel'
 getDates = require '../getDates'
 Date.prototype.addDays = require '../addDays'
 Date.prototype.resetTime = require '../resetTime'
+stringToKey = require '../strToKey'
 
 class Station
 
@@ -22,7 +23,7 @@ class Station
 
   # @param [Boolean] asKey If the country should made uppercase and special chars removed
   # @returns [String] The country where this station lies in
-  getCountry: (asKey = false) => if asKey then @country.toUpperCase().replace(/(?:\W)/g, '') else @country
+  getCountry: (asKey = false) => if asKey then stringToKey @country else @country
 
   generateVerpflegung: () ->
     if not @_entryDate? or not @exitDate?

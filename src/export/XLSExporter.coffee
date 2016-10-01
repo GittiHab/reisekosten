@@ -1,5 +1,7 @@
 Exporter = require './Exporter'
 ExcelBuilder = require 'excel-builder'
+fs = require 'fs'
+strToKey = require '../core/strToKey'
 
 class XLSExporter extends Exporter
 
@@ -21,6 +23,7 @@ class XLSExporter extends Exporter
   _generateYearOverview: (data) =>
     @data = data
     @countries = []
+    @countriesAsKeys = []
     @taxes = []
     workbook = new ExcelBuilder.Workbook
     @_createDefaultStyle workbook
@@ -48,10 +51,10 @@ class XLSExporter extends Exporter
       ]
     ]
     for travel, i in @data
-      @_addCountries travel.getCountries true
+      @_addCountries travel.getCountries false
       row = [
-        @_createCell(travel.getStart())
-        @_createCell(travel.getEnd())
+        @_createCell(Exporter.formatDate travel.getStart())
+        @_createCell(Exporter.formatDate travel.getEnd())
         @_createCell(travel.getTitle())
         @_createCell(travel.serializeStations())
         @_createCell(travel.calculateTransport(false), type: 'formula')
@@ -81,7 +84,8 @@ class XLSExporter extends Exporter
   _addCountries: (countries = []) =>
     for country in countries
       if @countries.indexOf(country) < 0
-        @countries.push country.toUpperCase().replace(/\ ,/g, '')
+        @countries.push country
+        @countriesAsKeys.push strToKey country
     return
 
   _createDefaultStyle: (workbook) =>
@@ -112,7 +116,7 @@ class XLSExporter extends Exporter
     value = value.replace(/\{\{([A-Z]+)\.(hd|fd)\}\}/g, (found, country, type) ->
       row = if type is 'hd' then 4 else 3
       abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-      col = abc[_this.countries.indexOf(country) + 1]
+      col = abc[_this.countriesAsKeys.indexOf(country) + 1]
       return _this.flatSheetName + '!' + col + row)
     return value
 
@@ -122,18 +126,27 @@ class XLSExporter extends Exporter
     # PKW
     flatData.push [
       @_createCell 'PWK KM-Satz'
-      @_createCell 0
+      @_createCell 0.3
     ]
     ## Day-flat
+    flatData = flatData.concat @_fillInFlats()
+    return flatData
+
+  _fillInFlats: =>
+    flatData = []
+    # Country titles
     flatData.push [@_createCell 'Dauer'].concat (@_createCell country for country in @countries)
+    # pre-defined flats
+    flats = JSON.parse (fs.readFileSync __dirname + '/../data/countries.json')
     # 24-hours
-    flatData.push [@_createCell '24 Stunden']
+    flatData.push [@_createCell '24 Stunden'].concat (@_createCell flats[country].full for country in @countries)
     # 8-24hours
-    flatData.push [@_createCell '8-24 Stunden']
+    flatData.push [@_createCell '8-24 Stunden'].concat (@_createCell flats[country].half for country in @countries)
     flatData.push [
       @_createCell 'Quellen:'
       @_createCell 'http://www.reisekostenabrechnung.com/verpflegungsmehraufwand-2015/'
     ]
     return flatData
+
 
 module.exports = XLSExporter

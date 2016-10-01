@@ -23,4 +23,10 @@ class Exporter
     throw new Error 'Method "export" should be overriden'
     return
 
+  @formatDate: (date) ->
+    day = date.getDate()
+    month = date.getMonth()
+    year = date.getFullYear()
+    return "#{day}.#{month}.#{year}"
+
 module.exports = Exporter
