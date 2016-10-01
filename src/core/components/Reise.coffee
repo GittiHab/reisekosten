@@ -88,15 +88,27 @@ class Reise
   # @see Station.calculateTransport
   calculateTransport: (includeRates = true) =>
     total = 0
-    for station in @stations
-      total += station.calculateFlats includeRates
+    first = true
+    for station, i in @stations
+      currTotal = station.calculateTransport includeRates
+      if currTotal is 0 or not currTotal? or currTotal is ''
+        continue
+      if not includeRates and not first then total += '+'
+      first = false
+      total += currTotal
     return total
 
   # @see Station.calculateFlats
   calculateFlats: (includeFlats = true) =>
     total = 0
-    for station in @stations
-      total += station.calculateFlats includeFlats
+    first = true
+    for station, i in @stations
+      currFlat = station.calculateFlats includeFlats
+      if currFlat is 0 or not currFlat? or currFlat is ''
+        continue
+      if not includeFlats and not first then total += '+'
+      first = false
+      total += currFlat
     return total
 
   # Calculates the total amount you would receive back from the tax for the bills
