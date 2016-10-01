@@ -1,0 +1,938 @@
+{
+  "Deutschland": {
+    "full": 24,
+    "half": 12
+  },
+  "Afghanistan": {
+    "full": 30,
+    "half": 20
+  },
+  "Ägypten": {
+    "full": 40,
+    "half": 27
+  },
+  "Äthiopien": {
+    "full": 27,
+    "half": 18
+  },
+  "Äquatorialguinea": {
+    "full": 50,
+    "half": 33
+  },
+  "Albanien": {
+    "full": 23,
+    "half": 16
+  },
+  "Algerien": {
+    "full": 39,
+    "half": 26
+  },
+  "Andorra": {
+    "full": 32,
+    "half": 21
+  },
+  "Angola": {
+    "full": 77,
+    "half": 52
+  },
+  "Antigua und Barbuda": {
+    "full": 53,
+    "half": 36
+  },
+  "Argentinien": {
+    "full": 34,
+    "half": 23
+  },
+  "Armenien": {
+    "full": 23,
+    "half": 16
+  },
+  "Aserbaidschan": {
+    "full": 40,
+    "half": 27
+  },
+  "Australien (Canberra)": {
+    "full": 58,
+    "half": 39
+  },
+  "Australien (Sydney)": {
+    "full": 59,
+    "half": 40
+  },
+  "Australien (Rest)": {
+    "full": 56,
+    "half": 37
+  },
+  "Bahrain": {
+    "full": 36,
+    "half": 24
+  },
+  "Bangladesch": {
+    "full": 30,
+    "half": 20
+  },
+  "Barbados": {
+    "full": 58,
+    "half": 39
+  },
+  "Belgien": {
+    "full": 41,
+    "half": 28
+  },
+  "Benin": {
+    "full": 40,
+    "half": 27
+  },
+  "Bolivien": {
+    "full": 24,
+    "half": 16
+  },
+  "Bosnien + Herzegowina": {
+    "full": 18,
+    "half": 12
+  },
+  "Botsuana": {
+    "full": 33,
+    "half": 22
+  },
+  "Brasilien (Brasilia)": {
+    "full": 53,
+    "half": 36
+  },
+  "Brasilien (Rio de Janeiro)": {
+    "full": 47,
+    "half": 32
+  },
+  "Brasilien (Sao Paulo)": {
+    "full": 53,
+    "half": 36
+  },
+  "Brasilien (Rest)": {
+    "full": 54,
+    "half": 36
+  },
+  "Brunei": {
+    "full": 48,
+    "half": 32
+  },
+  "Bulgarien": {
+    "full": 22,
+    "half": 15
+  },
+  "Burkina Faso": {
+    "full": 44,
+    "half": 29
+  },
+  "Burundi": {
+    "full": 47,
+    "half": 32
+  },
+  "Chile": {
+    "full": 40,
+    "half": 27
+  },
+  "China (Chengdu)": {
+    "full": 32,
+    "half": 21
+  },
+  "China (Hongkong)": {
+    "full": 62,
+    "half": 41
+  },
+  "China (Peking)": {
+    "full": 39,
+    "half": 26
+  },
+  "China (Shanghai)": {
+    "full": 42,
+    "half": 28
+  },
+  "China (Rest)": {
+    "full": 33,
+    "half": 22
+  },
+  "Costa Rica": {
+    "full": 36,
+    "half": 24
+  },
+  "Côte d’Ivoire": {
+    "full": 51,
+    "half": 34
+  },
+  "Dänemark": {
+    "full": 60,
+    "half": 40
+  },
+  "Dominica": {
+    "full": 40,
+    "half": 27
+  },
+  "Dominikanische Republik": {
+    "full": 40,
+    "half": 27
+  },
+  "Dschibuti": {
+    "full": 48,
+    "half": 32
+  },
+  "Ecuador": {
+    "full": 39,
+    "half": 26
+  },
+  "El Salvador": {
+    "full": 46,
+    "half": 31
+  },
+  "Eritrea": {
+    "full": 30,
+    "half": 20
+  },
+  "Estland": {
+    "full": 27,
+    "half": 18
+  },
+  "Fidschi": {
+    "full": 32,
+    "half": 21
+  },
+  "Finnland": {
+    "full": 39,
+    "half": 26
+  },
+  "Frankreich (Lyon)": {
+    "full": 53,
+    "half": 36
+  },
+  "Frankreich (Marseille)": {
+    "full": 51,
+    "half": 34
+  },
+  "Frankreich (Paris)": {
+    "full": 58,
+    "half": 39
+  },
+  "Frankreich (Departements 92-94: Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne)": {
+    "full": 58,
+    "half": 39
+  },
+  "Frankreich (Straßburg)": {
+    "full": 48,
+    "half": 32
+  },
+  "Frankreich (Rest)": {
+    "full": 44,
+    "half": 29
+  },
+  "Gabun": {
+    "full": 62,
+    "half": 41
+  },
+  "Gambia": {
+    "full": 18,
+    "half": 12
+  },
+  "Georgien": {
+    "full": 30,
+    "half": 20
+  },
+  "Ghana": {
+    "full": 46,
+    "half": 31
+  },
+  "Grenada": {
+    "full": 51,
+    "half": 34
+  },
+  "Griechenland (Athen)": {
+    "full": 57,
+    "half": 38
+  },
+  "Griechenland (Rest)": {
+    "full": 42,
+    "half": 28
+  },
+  "Großbritannien (London)": {
+    "full": 57,
+    "half": 38
+  },
+  "Großbritannien + Nordirland (Rest)": {
+    "full": 42,
+    "half": 28
+  },
+  "Guatemala": {
+    "full": 28,
+    "half": 19
+  },
+  "Guinea": {
+    "full": 38,
+    "half": 25
+  },
+  "Guinea-Bissau": {
+    "full": 30,
+    "half": 20
+  },
+  "Guyana": {
+    "full": 41,
+    "half": 28
+  },
+  "Haiti": {
+    "full": 50,
+    "half": 33
+  },
+  "Honduras": {
+    "full": 44,
+    "half": 29
+  },
+  "Indien (Chennai)": {
+    "full": 30,
+    "half": 20
+  },
+  "Indien (Kalkutta)": {
+    "full": 33,
+    "half": 22
+  },
+  "Indien (Mumbai)": {
+    "full": 35,
+    "half": 24
+  },
+  "Indien (Neu Delhi)": {
+    "full": 35,
+    "half": 24
+  },
+  "Indien (Rest)": {
+    "full": 30,
+    "half": 20
+  },
+  "Indonesien": {
+    "full": 38,
+    "half": 25
+  },
+  "Iran": {
+    "full": 28,
+    "half": 19
+  },
+  "Irland": {
+    "full": 42,
+    "half": 28
+  },
+  "Island": {
+    "full": 47,
+    "half": 32
+  },
+  "Israel": {
+    "full": 59,
+    "half": 40
+  },
+  "Italien (Mailand)": {
+    "full": 39,
+    "half": 26
+  },
+  "Italien (Rom)": {
+    "full": 52,
+    "half": 35
+  },
+  "Italien (Rest)": {
+    "full": 34,
+    "half": 23
+  },
+  "Jamaika": {
+    "full": 54,
+    "half": 36
+  },
+  "Japan (Tokio)": {
+    "full": 53,
+    "half": 36
+  },
+  "Japan (Rest)": {
+    "full": 51,
+    "half": 34
+  },
+  "Jemen": {
+    "full": 24,
+    "half": 16
+  },
+  "Jordanien": {
+    "full": 36,
+    "half": 24
+  },
+  "Kambodscha": {
+    "full": 36,
+    "half": 24
+  },
+  "Kamerun": {
+    "full": 40,
+    "half": 27
+  },
+  "Kanada (Ottawa)": {
+    "full": 36,
+    "half": 24
+  },
+  "Kanada (Toronto)": {
+    "full": 41,
+    "half": 28
+  },
+  "Kanada (Vancouver)": {
+    "full": 36,
+    "half": 24
+  },
+  "Kanada (Rest)": {
+    "full": 36,
+    "half": 24
+  },
+  "Kap Verde": {
+    "full": 30,
+    "half": 20
+  },
+  "Kasachstan": {
+    "full": 39,
+    "half": 26
+  },
+  "Katar": {
+    "full": 56,
+    "half": 37
+  },
+  "Kenia": {
+    "full": 35,
+    "half": 24
+  },
+  "Kirgisistan": {
+    "full": 29,
+    "half": 20
+  },
+  "Kolumbien": {
+    "full": 41,
+    "half": 28
+  },
+  "Kongo (Republik)": {
+    "full": 57,
+    "half": 38
+  },
+  "Kongo (Demokratische Republik)": {
+    "full": 60,
+    "half": 40
+  },
+  "Korea (Süd)": {
+    "full": 66,
+    "half": 44
+  },
+  "Korea (Nord)": {
+    "full": 39,
+    "half": 26
+  },
+  "Kosovo": {
+    "full": 26,
+    "half": 17
+  },
+  "Kroatien": {
+    "full": 28,
+    "half": 19
+  },
+  "Kuba": {
+    "full": 50,
+    "half": 33
+  },
+  "Kuwait": {
+    "full": 42,
+    "half": 28
+  },
+  "Laos": {
+    "full": 33,
+    "half": 22
+  },
+  "Lesotho": {
+    "full": 24,
+    "half": 16
+  },
+  "Lettland": {
+    "full": 30,
+    "half": 20
+  },
+  "Libanon": {
+    "full": 44,
+    "half": 29
+  },
+  "Libyen": {
+    "full": 45,
+    "half": 30
+  },
+  "Liechtenstein": {
+    "full": 47,
+    "half": 32
+  },
+  "Litauen": {
+    "full": 24,
+    "half": 16
+  },
+  "Luxemburg": {
+    "full": 47,
+    "half": 32
+  },
+  "Madagaskar": {
+    "full": 38,
+    "half": 25
+  },
+  "Malawi": {
+    "full": 39,
+    "half": 26
+  },
+  "Malaysia": {
+    "full": 36,
+    "half": 24
+  },
+  "Malediven": {
+    "full": 38,
+    "half": 25
+  },
+  "Mali": {
+    "full": 41,
+    "half": 28
+  },
+  "Malta": {
+    "full": 45,
+    "half": 30
+  },
+  "Marokko": {
+    "full": 42,
+    "half": 28
+  },
+  "Marshall Inseln": {
+    "full": 63,
+    "half": 42
+  },
+  "Mauretanien": {
+    "full": 48,
+    "half": 32
+  },
+  "Mauritius": {
+    "full": 48,
+    "half": 32
+  },
+  "Mazedonien": {
+    "full": 24,
+    "half": 16
+  },
+  "Mexiko": {
+    "full": 41,
+    "half": 28
+  },
+  "Mikronesien": {
+    "full": 56,
+    "half": 37
+  },
+  "Moldau (Republik)": {
+    "full": 18,
+    "half": 12
+  },
+  "Monaco": {
+    "full": 41,
+    "half": 28
+  },
+  "Mongolei": {
+    "full": 29,
+    "half": 20
+  },
+  "Montenegro": {
+    "full": 29,
+    "half": 20
+  },
+  "Mosambik": {
+    "full": 42,
+    "half": 28
+  },
+  "Myanmar": {
+    "full": 46,
+    "half": 31
+  },
+  "Namibia": {
+    "full": 23,
+    "half": 16
+  },
+  "Nepal": {
+    "full": 28,
+    "half": 19
+  },
+  "Neuseeland": {
+    "full": 47,
+    "half": 32
+  },
+  "Nicaragua": {
+    "full": 30,
+    "half": 20
+  },
+  "Niederlande": {
+    "full": 46,
+    "half": 31
+  },
+  "Niger": {
+    "full": 36,
+    "half": 24
+  },
+  "Nigeria": {
+    "full": 63,
+    "half": 42
+  },
+  "Norwegen": {
+    "full": 64,
+    "half": 43
+  },
+  "Österreich": {
+    "full": 36,
+    "half": 24
+  },
+  "Oman": {
+    "full": 48,
+    "half": 32
+  },
+  "Pakistan (Islamabad)": {
+    "full": 30,
+    "half": 20
+  },
+  "Pakistan (Rest)": {
+    "full": 27,
+    "half": 18
+  },
+  "Palau": {
+    "full": 51,
+    "half": 34
+  },
+  "Panama": {
+    "full": 34,
+    "half": 23
+  },
+  "Papua-Neuguinea": {
+    "full": 36,
+    "half": 24
+  },
+  "Paraguay": {
+    "full": 36,
+    "half": 24
+  },
+  "Peru": {
+    "full": 30,
+    "half": 20
+  },
+  "Philippinen": {
+    "full": 30,
+    "half": 20
+  },
+  "Polen (Breslau)": {
+    "full": 33,
+    "half": 22
+  },
+  "Polen (Danzig)": {
+    "full": 29,
+    "half": 20
+  },
+  "Polen (Krakau)": {
+    "full": 28,
+    "half": 19
+  },
+  "Polen (Warschau)": {
+    "full": 30,
+    "half": 20
+  },
+  "Polen (Rest)": {
+    "full": 27,
+    "half": 18
+  },
+  "Portugal": {
+    "full": 36,
+    "half": 24
+  },
+  "Ruanda": {
+    "full": 36,
+    "half": 24
+  },
+  "Rumänien (Bukarest)": {
+    "full": 26,
+    "half": 17
+  },
+  "Rumänien (Rest)": {
+    "full": 27,
+    "half": 18
+  },
+  "Russische Föderation (Moskau)": {
+    "full": 30,
+    "half": 20
+  },
+  "Russische Föderation (St. Petersburg)": {
+    "full": 24,
+    "half": 16
+  },
+  "Russische Föderation (Rest)": {
+    "full": 21,
+    "half": 14
+  },
+  "Sambia": {
+    "full": 36,
+    "half": 24
+  },
+  "Samoa": {
+    "full": 29,
+    "half": 20
+  },
+  "São Tomé (Príncipe)": {
+    "full": 42,
+    "half": 28
+  },
+  "San Marino": {
+    "full": 41,
+    "half": 28
+  },
+  "Saudi-Arabien (Djidda)": {
+    "full": 48,
+    "half": 32
+  },
+  "Saudi-Arabien (Riad)": {
+    "full": 48,
+    "half": 32
+  },
+  "Saudi-Arabien (Rest)": {
+    "full": 47,
+    "half": 32
+  },
+  "Schweden": {
+    "full": 72,
+    "half": 48
+  },
+  "Schweiz (Genf)": {
+    "full": 62,
+    "half": 41
+  },
+  "Schweiz (Rest)": {
+    "full": 48,
+    "half": 32
+  },
+  "Senegal": {
+    "full": 47,
+    "half": 32
+  },
+  "Serbien": {
+    "full": 30,
+    "half": 20
+  },
+  "Sierra Leone": {
+    "full": 39,
+    "half": 26
+  },
+  "Simbabwe": {
+    "full": 45,
+    "half": 30
+  },
+  "Singapur": {
+    "full": 53,
+    "half": 36
+  },
+  "Slowakische Republik": {
+    "full": 24,
+    "half": 16
+  },
+  "Slowenien": {
+    "full": 30,
+    "half": 20
+  },
+  "Spanien (Barcelona)": {
+    "full": 32,
+    "half": 21
+  },
+  "Spanien (Kanarische Inseln)": {
+    "full": 32,
+    "half": 21
+  },
+  "Spanien (Madrid)": {
+    "full": 41,
+    "half": 28
+  },
+  "Spanien (Palma de Mallorca)": {
+    "full": 32,
+    "half": 21
+  },
+  "Spanien (Rest)": {
+    "full": 29,
+    "half": 20
+  },
+  "Sri Lanka": {
+    "full": 40,
+    "half": 27
+  },
+  "St. Kitts + Nevis": {
+    "full": 45,
+    "half": 30
+  },
+  "St. Lucia": {
+    "full": 54,
+    "half": 36
+  },
+  "St. Vincent + Grenadinen": {
+    "full": 52,
+    "half": 35
+  },
+  "Sudan": {
+    "full": 35,
+    "half": 24
+  },
+  "Südafrika (Kapstadt)": {
+    "full": 38,
+    "half": 25
+  },
+  "Südafrika (Rest)": {
+    "full": 36,
+    "half": 24
+  },
+  "Südsudan": {
+    "full": 53,
+    "half": 36
+  },
+  "Suriname": {
+    "full": 30,
+    "half": 20
+  },
+  "Syrien": {
+    "full": 38,
+    "half": 25
+  },
+  "Tadschikistan": {
+    "full": 26,
+    "half": 17
+  },
+  "Taiwan": {
+    "full": 39,
+    "half": 26
+  },
+  "Tansania": {
+    "full": 40,
+    "half": 27
+  },
+  "Thailand": {
+    "full": 32,
+    "half": 21
+  },
+  "Togo": {
+    "full": 35,
+    "half": 24
+  },
+  "Tonga": {
+    "full": 32,
+    "half": 21
+  },
+  "Trinidad + Tobago": {
+    "full": 54,
+    "half": 36
+  },
+  "Tschad": {
+    "full": 47,
+    "half": 32
+  },
+  "Tschechische Republik": {
+    "full": 24,
+    "half": 16
+  },
+  "Türkei (Istanbul)": {
+    "full": 35,
+    "half": 24
+  },
+  "Türkei (Izmir)": {
+    "full": 42,
+    "half": 28
+  },
+  "Türkei (Rest)": {
+    "full": 40,
+    "half": 27
+  },
+  "Tunesien": {
+    "full": 33,
+    "half": 22
+  },
+  "Turkmenistan": {
+    "full": 33,
+    "half": 22
+  },
+  "Uganda": {
+    "full": 35,
+    "half": 24
+  },
+  "Ukraine": {
+    "full": 36,
+    "half": 24
+  },
+  "Ungarn": {
+    "full": 30,
+    "half": 20
+  },
+  "Uruguay": {
+    "full": 44,
+    "half": 29
+  },
+  "USA (Atlanta)": {
+    "full": 57,
+    "half": 38
+  },
+  "USA (Boston)": {
+    "full": 48,
+    "half": 32
+  },
+  "USA (Chicago)": {
+    "full": 48,
+    "half": 32
+  },
+  "USA (Houston)": {
+    "full": 57,
+    "half": 38
+  },
+  "USA (Los Angeles)": {
+    "full": 48,
+    "half": 32
+  },
+  "USA (Miami)": {
+    "full": 57,
+    "half": 38
+  },
+  "USA (New York City)": {
+    "full": 48,
+    "half": 32
+  },
+  "USA (San Francisco)": {
+    "full": 48,
+    "half": 32
+  },
+  "USA (Washington D.C.)": {
+    "full": 57,
+    "half": 38
+  },
+  "USA (Rest)": {
+    "full": 48,
+    "half": 32
+  },
+  "Usbekistan": {
+    "full": 34,
+    "half": 23
+  },
+  "Vatikanstaat": {
+    "full": 52,
+    "half": 35
+  },
+  "Venezuela": {
+    "full": 48,
+    "half": 32
+  },
+  "Vereinigte Arabische Emirate": {
+    "full": 45,
+    "half": 30
+  },
+  "Vietnam": {
+    "full": 38,
+    "half": 25
+  },
+  "Weißrussland": {
+    "full": 27,
+    "half": 18
+  },
+  "Zentralafrikanische Republik": {
+    "full": 29,
+    "half": 20
+  },
+  "Zypern": {
+    "full": 39,
+    "half": 26
+  }
+}
