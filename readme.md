@@ -1,6 +1,6 @@
 Reisekostenabrechnung (Travel expense report)
 =====
-Development details in the Wiki. English version below ([Skip there](#english)).
+Development details in the Wiki. English version below.
 
 # Über
 Die deutsche Steuer ist ein komplexes Thema. So komplex, dass man eine Steuererklärung entweder nur mithilfe eines
@@ -11,7 +11,6 @@ Momentan ist jedoch das Programm jedoch noch in einem frühen Betastadium und de
 Außerdem gilt der Hinweis, dass dieses Programm grundsätzlich nur auf eigene Gefahr einzusetzen ist und kein Anspruch
 auf Korrektheit übernommen wird.
 
-<span id="english"></span>
 # About
 The german tax is very complex. In fact it is so complex that in most cases a return of tax is only possible with the
 help of a tax accountant or a software. With this software I am trying to go step in to making an open source solution
