@@ -5,9 +5,19 @@
     "chai": "^3.5.0",
     "electron": "^1.4.0",
     "electron-packager": "^8.0.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-htmlmin": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-newer": "^1.2.0",
+    "grunt-shell": "^1.2.1",
     "mocha": "^3.0.2"
   },
-  "main": "app/src/index.js",
+  "main": "app/index.js",
   "directories": {
     "test": "test"
   },
@@ -25,6 +35,6 @@
     "build": "electron-packager ./ \"Reisekostenabrechnung\" --platform=darwin --icon=./icons/icon.icns --overwrite --out=./build"
   },
   "author": "Pius Ladenburger",
-  "license": "UNLICENSED",
-  "description": ""
+  "license": "Apache 2",
+  "description": "The open source travel expense report solution for the German tax payer."
 }
