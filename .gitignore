@@ -3,5 +3,4 @@ node_modules/
 app/**/*.js*
 !/app/**/*.json
 app/**/*.css*
-icons/
 build/
